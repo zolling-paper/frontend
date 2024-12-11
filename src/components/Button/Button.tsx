@@ -17,11 +17,11 @@ export const Button: React.FC<ButtonProps> = forwardRef<HTMLButtonElement, Butto
     <button
       css={buttonStyle({variants, size, theme})}
       ref={ref}
+      {...htmlProps}
       disabled={isLoading ? true : disabled}
       aria-busy={isLoading}
       aria-label={isLoading ? "로딩 중" : htmlProps['aria-label']}
       //TODO: (@Todari) loading styling
-      {...htmlProps}
     >
       {children}
     </button>

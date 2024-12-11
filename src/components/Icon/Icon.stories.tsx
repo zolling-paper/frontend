@@ -60,7 +60,7 @@ export const Tertiary: Story = {
   },
 };
 
-export const Error: Story = {
+export const OnError: Story = {
   args: {
     iconType: 'inputDelete',
     iconColor: 'error', 

@@ -94,6 +94,8 @@ export const GlobalStyle = css`
     overflow-wrap: break-word;
     -webkit-line-break: after-white-space;
     -webkit-user-select: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
 
   /* Apply back the draggable feature - exist only in Chromium and Safari */

@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, ReactNode, useMemo} from 'react';
+import React, {createContext, useContext, ReactNode, useMemo} from 'react';
 import {Global} from '@emotion/react';
 
 import {Theme} from '@theme/theme.type';
