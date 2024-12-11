@@ -1,7 +1,6 @@
 import React from 'react';
 import type {Preview} from '@storybook/react';
 import {Global, css} from '@emotion/react';
-import {DesignProvider} from '../src/theme/DesignProvider';
 
 const preview: Preview = {
   parameters: {
@@ -24,9 +23,7 @@ const preview: Preview = {
               }
             `}
           />
-          <DesignProvider>
             <Story />
-          </DesignProvider>
         </div>
       );
     },
