@@ -1,11 +1,11 @@
 import {Theme} from '@theme/theme.type';
-import {ColorKeys} from '@token/colors';
+import {ColorKey} from '@token/colors';
 
 import {ICON} from './Icon';
 
 export type IconType = keyof typeof ICON;
 
-export type IconColor = ColorKeys;
+export type IconColor = ColorKey;
 
 export interface IconStyleProps {
   iconColor?: IconColor;
@@ -16,8 +16,6 @@ export interface IconStylePropsWithTheme extends IconStyleProps {
   theme: Theme;
 }
 
-export interface IconCustomProps {}
-
-export type IconOptionProps = IconStyleProps & IconCustomProps;
+export type IconOptionProps = IconStyleProps;
 
 export type IconProps = React.ComponentProps<'div'> & IconOptionProps;

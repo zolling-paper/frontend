@@ -18,8 +18,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     autoFocus = false,
     labelText,
     errorText = '',
-    inputType = 'input',
-    isError,
+    hasError,
     ...htmlProps
   }: InputProps,
   ref,
@@ -32,11 +31,15 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
   useImperativeHandle(ref, () => inputRef.current!);
 
   useEffect(() => {
-    inputRef.current?.addEventListener('focus', () => setHasFocus(true));
-    inputRef.current?.addEventListener('blur', () => setHasFocus(false));
+    const handleFocus = () => setHasFocus(true);
+    const handleBlur = () => setHasFocus(false);
+    const currentRef = inputRef.current;
+
+    currentRef?.addEventListener('focus', handleFocus);
+    currentRef?.addEventListener('blur', handleBlur);
     return () => {
-      inputRef.current?.removeEventListener('focus', () => setHasFocus(true));
-      inputRef.current?.removeEventListener('blur', () => setHasFocus(false));
+      currentRef?.removeEventListener('focus', handleFocus);
+      currentRef?.removeEventListener('blur', handleBlur);
     };
   }, []);
 
@@ -50,13 +53,13 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
             </Text>
           )}
           {errorText && (
-            <Text size="caption" css={errorTextStyle(theme, isError ?? false)}>
+            <Text size="caption" css={errorTextStyle(theme, hasError ?? false)}>
               {errorText}
             </Text>
           )}
         </div>
       )}
-        <div css={inputBoxStyle(theme, hasFocus, isError)}>
+        <div css={inputBoxStyle(theme, hasFocus, hasError)}>
           <input
             css={inputStyle(theme)}
             ref={inputRef}
@@ -67,15 +70,10 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
             {...htmlProps}
           />
           {onDelete && value && hasFocus && (
-            <button tabIndex={-1} onMouseDown={onDelete} aria-label="입력 내용 모두 지우기">
+            <button type="button" onClick={onDelete} onKeyDown={(e) => e.key === 'Enter' && onDelete()} aria-label="입력 내용 모두 지우기">
               <Icon iconType="inputDelete" />
             </button>
           )}
-          {/* {inputType === 'search' && (
-            <button tabIndex={-1} aria-label="검색">
-              <Icon iconType="search" />
-            </button>
-          )} */}
         </div>
     </div>
   );

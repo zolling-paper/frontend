@@ -42,5 +42,5 @@ export const getSizeStyling = ({size, textColor, theme, responsive}: Required<Te
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
   });
 
-  return [style[size], colorStyle, baseStyle];
+  return [style[size as keyof typeof style], colorStyle, baseStyle];
 };

@@ -64,7 +64,7 @@ const PRIMITIVE_COLORS = {
 
 type Color = string;
 
-export type ColorKeys =
+export type ColorKey =
   | 'white'
   | 'black'
   | 'primary'
@@ -81,10 +81,9 @@ export type ColorKeys =
   | 'errorContainer'
   | 'onErrorContainer'
   | 'warn'
-  | 'complete'
-  | 'kakao'
-  | 'onKakao';
-export type ColorTokens = Record<ColorKeys, Color>;
+  | 'complete';
+
+export type ColorTokens = Record<ColorKey, Color>;
 
 // TODO: (@soha) 대괄호 사용에 대해 논의
 export const COLORS: ColorTokens = {
@@ -108,9 +107,6 @@ export const COLORS: ColorTokens = {
   onErrorContainer: PRIMITIVE_COLORS.pink[300],
   warn: PRIMITIVE_COLORS.yellow[400],
   complete: PRIMITIVE_COLORS.green[300],
-
-  kakao: '#FEE500',
-  onKakao: '#181600',
 };
 
 export const PRIMARY_COLORS = PRIMITIVE_COLORS.purple;

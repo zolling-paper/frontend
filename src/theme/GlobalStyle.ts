@@ -26,6 +26,17 @@ export const GlobalStyle = css`
   button {
     cursor: revert;
     line-height: 0;
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+    &::selection {
+      background-color: rgba(0, 0, 0, 0.1);
+      color: inherit;
+    }
   }
 
   button:disabled {

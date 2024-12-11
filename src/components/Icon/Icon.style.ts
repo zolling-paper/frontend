@@ -1,6 +1,6 @@
 import {css} from '@emotion/react';
 
-import {ColorKeys} from '@token/colors';
+import {ColorKey} from '@token/colors';
 
 import {IconColor, IconStylePropsWithTheme, IconType} from './Icon.type';
 
@@ -22,7 +22,7 @@ export const iconStyle = ({iconType, theme, iconColor}: IconStylePropsWithTheme)
 const getIconColor = ({iconType, theme, iconColor}: IconStylePropsWithTheme) => {
   if (iconColor) {
     return css({
-      color: theme.colors[iconColor as ColorKeys],
+      color: theme.colors[iconColor as ColorKey],
     });
   } else {
     return css({color: theme.colors[ICON_DEFAULT_COLOR[iconType]]});

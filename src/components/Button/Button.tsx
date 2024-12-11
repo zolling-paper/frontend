@@ -9,7 +9,7 @@ import {buttonStyle} from './Button.style';
 
 
 export const Button: React.FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {variants = 'primary', size = 'medium', disabled, children, ...htmlProps}: ButtonProps,
+  {variants = 'primary', size = 'medium', disabled, children, isLoading, ...htmlProps}: ButtonProps,
   ref,
 ) {
   const {theme} = useTheme();
@@ -17,7 +17,10 @@ export const Button: React.FC<ButtonProps> = forwardRef<HTMLButtonElement, Butto
     <button
       css={buttonStyle({variants, size, theme})}
       ref={ref}
-      disabled={variants === 'loading' ? true : disabled}
+      disabled={isLoading ? true : disabled}
+      aria-busy={isLoading}
+      aria-label={isLoading ? "로딩 중" : htmlProps['aria-label']}
+      //TODO: (@Todari) loading styling
       {...htmlProps}
     >
       {children}

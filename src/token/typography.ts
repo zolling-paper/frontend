@@ -1,5 +1,13 @@
-type Typography = Record<string, string>;
-export type TypographyTokens = Record<string, Typography>;
+export interface Typography {
+  fontFamily: string;
+  fontSize: string;
+  lineHeight: string;
+  fontWeight: string;
+}
+
+export type TypographyTokenKey = 'head' | 'title' | 'subTitle' | 'bodyBold' | 'body' | 'smallBodyBold' | 'smallBody' | 'captionBold' | 'caption' | 'tiny';
+
+export type TypographyTokens = Record<TypographyTokenKey, Typography>;
 
 export const TYPOGRAPHY: TypographyTokens = {
   head: {

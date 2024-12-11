@@ -22,7 +22,10 @@ const getButtonDefaultStyle = (theme: Theme) =>
     transition: '0.2s',
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
     whiteSpace: 'nowrap',
-
+    '&:focus-visible': {
+      outline: `2px solid ${theme.colors.complete}`,
+      outlineOffset: '1px',
+    },
     '&:disabled': {
       backgroundColor: theme.colors.grayContainer,
       color: theme.colors.onPrimary,
@@ -107,19 +110,6 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
         color: theme.colors.onPrimary,
       }),
       getHoverAndActiveBackground(theme.colors.error),
-    ],
-    loading: [
-      css({
-        backgroundColor: theme.colors.tertiary,
-        color: theme.colors.onTertiary,
-      }),
-      getHoverAndActiveBackground(theme.colors.tertiary),
-    ],
-    kakao: [
-      css({
-        backgroundColor: theme.colors.kakao,
-        color: theme.colors.onKakao,
-      }),
     ],
   };
 

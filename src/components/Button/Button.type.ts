@@ -1,7 +1,7 @@
 import {Theme} from '@theme/theme.type';
 
 export type ButtonSize = 'small' | 'medium' | 'semiLarge' | 'large';
-export type ButtonVariants = 'primary' | 'secondary' | 'tertiary' | 'destructive' | 'loading' | 'kakao';
+export type ButtonVariants = 'primary' | 'secondary' | 'tertiary' | 'destructive';
 
 export interface ButtonStyleProps {
   variants?: ButtonVariants;
@@ -9,8 +9,10 @@ export interface ButtonStyleProps {
   theme?: Theme;
 }
 
-export interface ButtonCustomProps {}
+export interface ButtonStateProps {
+  isLoading?: boolean;
+}
 
-export type ButtonOptionProps = ButtonStyleProps & ButtonCustomProps;
+export type ButtonOptionProps = ButtonStyleProps & ButtonStateProps;
 
 export type ButtonProps = React.ComponentProps<'button'> & ButtonOptionProps;

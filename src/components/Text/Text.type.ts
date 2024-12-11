@@ -1,21 +1,12 @@
+import TYPOGRAPHY from '@/token/typography';
 import {Theme} from '@theme/theme.type';
-import {ColorKeys} from '@token/colors';
+import {ColorKey} from '@token/colors';
 
-export type TextSize =
-  | 'head'
-  | 'title'
-  | 'subTitle'
-  | 'body'
-  | 'smallBody'
-  | 'caption'
-  | 'tiny'
-  | 'bodyBold'
-  | 'smallBodyBold'
-  | 'captionBold';
+export type TextSize = keyof typeof TYPOGRAPHY;
 
 export interface TextStyleProps {
   size?: TextSize;
-  textColor?: ColorKeys;
+  textColor?: ColorKey;
   responsive?: boolean;
 }
 
@@ -23,8 +14,6 @@ export interface TextStylePropsWithTheme extends TextStyleProps {
   theme: Theme;
 }
 
-export interface TextCustomProps {}
-
-export type TextOptionProps = TextStyleProps & TextCustomProps;
+export type TextOptionProps = TextStyleProps;
 
 export type TextProps = React.ComponentProps<'p'> & TextOptionProps;

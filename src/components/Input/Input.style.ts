@@ -79,5 +79,5 @@ export const inputStyle = (theme: Theme) =>
         color: theme.colors.gray,
       },
     },
-    theme.typography.body,
+    {...theme.typography.body},
   );

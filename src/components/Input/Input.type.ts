@@ -2,13 +2,10 @@ import {Theme} from '@theme/theme.type';
 
 export interface InputStyleProps {
   theme?: Theme;
-  isError?: boolean;
+  hasError?: boolean;
 }
 
-export type InputType = 'input' | 'search';
-
 export interface InputCustomProps {
-  inputType?: InputType;
   labelText?: string;
   errorText?: string | null;
   onDelete?: () => void;

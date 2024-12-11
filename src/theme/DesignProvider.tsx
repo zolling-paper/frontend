@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, ReactNode} from 'react';
+import React, {createContext, useContext, useState, ReactNode, useMemo} from 'react';
 import {Global} from '@emotion/react';
 
 import {Theme} from '@theme/theme.type';
@@ -20,7 +20,8 @@ const defaultTheme: Theme = {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const DesignProvider: React.FC<{children: ReactNode}> = ({children}) => {
-  const [theme, _] = useState<Theme>(defaultTheme);
+  const theme = useMemo(() => defaultTheme, []);
+  
   return (
     <ThemeContext.Provider value={{theme}}>
       <Global styles={GlobalStyle} />
