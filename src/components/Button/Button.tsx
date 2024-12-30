@@ -2,7 +2,7 @@
 
 import React, {forwardRef} from 'react';
 
-import {useTheme} from '@theme/useTheme';
+import {useTheme} from '@theme/DesignProvider';
 
 import {ButtonProps} from './Button.type';
 import {buttonStyle} from './Button.style';

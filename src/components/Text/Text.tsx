@@ -3,7 +3,7 @@ import type {TextProps} from './Text.type';
 
 import React from 'react';
 
-import {useTheme} from '@theme/useTheme';
+import {useTheme} from '@theme/DesignProvider';
 
 import {getSizeStyling} from './Text.style';
 

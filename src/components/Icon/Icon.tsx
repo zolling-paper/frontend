@@ -2,7 +2,7 @@
 
 import InputDelete from '@assets/image/inputDelete.svg';
 import {IconProps} from '@components/Icon/Icon.type';
-import {useTheme} from '@theme/useTheme';
+import {useTheme} from '@theme/DesignProvider';
 
 import {iconStyle} from './Icon.style';
 

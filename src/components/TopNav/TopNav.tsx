@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {useTheme} from '@theme/useTheme';
+import {useTheme} from '@theme/DesignProvider';
 
 import {topNavStyle} from './TopNav.style';
 import {Text} from '@components/Text';
