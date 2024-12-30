@@ -28,3 +28,5 @@ const getIconColor = ({iconType, theme, iconColor}: IconStylePropsWithTheme) => 
     return css({color: theme.colors[ICON_DEFAULT_COLOR[iconType]]});
   }
 };
+
+

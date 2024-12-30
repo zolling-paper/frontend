@@ -3,11 +3,11 @@ import type {TextProps} from './Text.type';
 
 import React from 'react';
 
-import {useTheme} from '@theme/DesignProvider';
+import {useTheme} from '@theme/useTheme';
 
 import {getSizeStyling} from './Text.style';
 
-const Text: React.FC<TextProps> = ({
+export const Text: React.FC<TextProps> = ({
   size = 'body',
   textColor = 'black',
   children,
@@ -21,5 +21,3 @@ const Text: React.FC<TextProps> = ({
     </p>
   );
 };
-
-export default Text;

@@ -2,7 +2,7 @@
 
 import InputDelete from '@assets/image/inputDelete.svg';
 import {IconProps} from '@components/Icon/Icon.type';
-import {useTheme} from '@theme/DesignProvider';
+import {useTheme} from '@theme/useTheme';
 
 import {iconStyle} from './Icon.style';
 
@@ -19,5 +19,3 @@ export const Icon = ({iconColor, iconType, ...htmlProps}: IconProps) => {
     </div>
   );
 };
-
-export default Icon;

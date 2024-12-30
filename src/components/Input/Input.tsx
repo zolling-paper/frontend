@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 
-import {useTheme} from '@theme/DesignProvider';
+import {useTheme} from '@theme/useTheme';
 
-import Text from '../Text/Text';
+import {Text} from '@components/Text';
+import {Icon} from '@components/Icon';
 
 import {inputBoxStyle, inputStyle, labelTextStyle, errorTextStyle, inputLayoutStyle, labelLayoutStyle} from './Input.style';
-import { InputProps } from './Input.type';
-import Icon from '../Icon/Icon';
+import {InputProps} from './Input.type';
 
 export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
@@ -53,15 +53,15 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
             </Text>
           )}
           {errorText && (
-            <Text size="caption" css={errorTextStyle(theme, hasError ?? false)}>
+            <Text size="caption" css={errorTextStyle({theme, isError: hasError ?? false, isFocus: hasFocus})}>
               {errorText}
             </Text>
           )}
         </div>
       )}
-        <div css={inputBoxStyle(theme, hasFocus, hasError)}>
+        <div css={inputBoxStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}>
           <input
-            css={inputStyle(theme)}
+            css={inputStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}
             ref={inputRef}
             value={value}
             onChange={onChange}
@@ -78,5 +78,3 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     </div>
   );
 });
-
-export default Input;

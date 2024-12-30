@@ -2,7 +2,7 @@
 
 import React, {forwardRef} from 'react';
 
-import {useTheme} from '@theme/DesignProvider';
+import {useTheme} from '@theme/useTheme';
 
 import {ButtonProps} from './Button.type';
 import {buttonStyle} from './Button.style';
@@ -27,5 +27,3 @@ export const Button: React.FC<ButtonProps> = forwardRef<HTMLButtonElement, Butto
     </button>
   );
 });
-
-export default Button;
