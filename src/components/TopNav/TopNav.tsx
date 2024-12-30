@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
+import {Text} from '@components/Text';
 import {useTheme} from '@theme/DesignProvider';
 
 import {topNavStyle} from './TopNav.style';
-import {Text} from '@components/Text';
 
 const TopNav = () => {
   const {theme} = useTheme();

@@ -1,7 +1,9 @@
-import React from 'react';
-import type {Preview} from '@storybook/react';
 import {Global, css} from '@emotion/react';
+import React from 'react';
+
 import {DesignProvider} from '../src/theme/DesignProvider';
+
+import type {Preview} from '@storybook/react';
 const preview: Preview = {
   parameters: {
     controls: {

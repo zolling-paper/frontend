@@ -1,11 +1,10 @@
-import React, { createContext, ReactNode, useContext, useMemo} from 'react';
 import {Global} from '@emotion/react';
-
-import {Theme} from '@theme/theme.type';
 import {GlobalStyle} from '@theme/GlobalStyle';
+import {Theme} from '@theme/theme.type';
 import {COLORS} from '@token/colors';
 import {TYPOGRAPHY} from '@token/typography';
 import {ZINDEX} from '@token/zIndex';
+import React, { createContext, ReactNode, useContext, useMemo} from 'react';
 
 interface ThemeContextProps {
   theme: Theme;

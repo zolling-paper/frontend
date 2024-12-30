@@ -1,5 +1,4 @@
 import {css} from '@emotion/react';
-
 import {ColorKey} from '@token/colors';
 
 import {IconColor, IconStylePropsWithTheme, IconType} from './Icon.type';

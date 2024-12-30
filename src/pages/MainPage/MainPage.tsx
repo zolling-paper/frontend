@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import {Button} from '@components/Button';
+
 import {mainLayout} from './MainPage.style';
 
 export default function MainPage() {

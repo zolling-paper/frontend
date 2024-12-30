@@ -1,9 +1,7 @@
-import type {TextStylePropsWithTheme} from './Text.type';
-
 import {css} from '@emotion/react';
-
-// TODO: (@todari) themeProvider 이용하도록 변경
 import TYPOGRAPHY from '@token/typography';
+
+import type {TextStylePropsWithTheme} from './Text.type';
 
 export const getSizeStyling = ({size, textColor, theme, responsive}: Required<TextStylePropsWithTheme>) => {
   const getResponsiveStyle = (baseStyle: {fontSize: string}) => {

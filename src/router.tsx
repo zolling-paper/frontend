@@ -1,8 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom';
 import ROUTE from '@constants/route';
+import { Suspense } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+
 import App from './App';
 import MainPage from './pages/MainPage/MainPage';
-import { Suspense } from 'react';
+
 const router = createBrowserRouter([
   {
     path: '',

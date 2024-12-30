@@ -1,6 +1,7 @@
+import {Icon, ICON} from '@components/Icon';
+
 import type {Meta, StoryObj} from '@storybook/react';
 
-import Icon, { ICON } from '@components/Icon/Icon';
 import { COLORS } from '@/token/colors';
 
 const meta = {
