@@ -2,7 +2,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
 import Box from '../Box/Box';
-import Stack from '../Stack/Stack';
 import HStack from '../Stack/HStack';
 
 import Container from './Container';
