@@ -3,7 +3,8 @@ import { Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import MainPage from './pages/MainPage/MainPage';
+import CreatePage from './pages/create/page';
+import MainPage from './pages/page';
 
 const router = createBrowserRouter([
   {
@@ -19,10 +20,10 @@ const router = createBrowserRouter([
         path: ROUTE.main,
         element: <MainPage />,
       },
-      // {
-      //   path: '*',
-      //   element: <ErrorPage />,
-      // },
+      {
+        path: ROUTE.create,
+        element: <CreatePage />,
+      },
     ],
   },
 ]);
