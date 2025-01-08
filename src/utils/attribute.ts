@@ -1,4 +1,4 @@
-type Unit = null | 'px' | '%' | 'em' | 'rem' | 'vh' | 'vw';
+// type Unit = null | 'px' | '%' | 'em' | 'rem' | 'vh' | 'vw';
 
 const checkStringUnit = (value?: string) => {
   if (!value) return '';
