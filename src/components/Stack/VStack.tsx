@@ -12,15 +12,12 @@ export const VStack = forwardRef<HTMLDivElement, VStackProps>(function VStack(
 
   return (
     <div css={vStackStyle({gap, align, p, m, br, b, bg})} ref={ref} {...props}>
-      {childrenArray.map((child, index) => {
-        const key = React.isValidElement(child) ? child.key || index : index;
-        return (
-          <>
-            <React.Fragment key={key}>{child}</React.Fragment>
-            {index !== childrenArray.length - 1 && divider}
-          </>
-        );
-      })}
+      {childrenArray.map((child, index) => (
+        <React.Fragment key={React.isValidElement(child) ? child.key || index : index}>
+          {child}
+          {index !== childrenArray.length - 1 && divider}
+        </React.Fragment>
+      ))}
     </div>
   );
 });

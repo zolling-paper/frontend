@@ -15,7 +15,7 @@ export const stringValueWithUnit = (value?: string | number) => {
   if (!value) return '';
   const stringValue = typeof value === 'number' ? `${value}px` : value;
   const unit = checkStringUnit(stringValue);
-  return `${stringValue}${unit === null ? (isNaN(Number(stringValue)) ? unit : 'px') : ''}`;
+  return `${stringValue}${unit === null ? (Number.isNaN(Number(stringValue)) ? unit : 'px') : ''}`;
 };
 
 export const stringAndNumberValue = (value?: string | number) => {
