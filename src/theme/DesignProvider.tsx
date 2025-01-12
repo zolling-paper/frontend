@@ -1,11 +1,10 @@
-import React, {createContext, useContext, ReactNode, useMemo} from 'react';
 import {Global} from '@emotion/react';
-
-import {Theme} from '@theme/theme.type';
 import {GlobalStyle} from '@theme/GlobalStyle';
+import {Theme} from '@theme/theme.type';
 import {COLORS} from '@token/colors';
 import {TYPOGRAPHY} from '@token/typography';
 import {ZINDEX} from '@token/zIndex';
+import React, { createContext, ReactNode, useContext, useMemo} from 'react';
 
 interface ThemeContextProps {
   theme: Theme;
@@ -17,7 +16,7 @@ const defaultTheme: Theme = {
   zIndex: ZINDEX,
 };
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const DesignProvider: React.FC<{children: ReactNode}> = ({children}) => {
   const theme = useMemo(() => defaultTheme, []);
@@ -30,7 +29,7 @@ export const DesignProvider: React.FC<{children: ReactNode}> = ({children}) => {
   );
 };
 
-export const useTheme = (): ThemeContextProps => {
+export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error('useTheme must be used within a DesignProvider');

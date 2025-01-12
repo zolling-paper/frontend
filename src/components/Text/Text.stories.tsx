@@ -1,7 +1,9 @@
+import TYPOGRAPHY from '@token/typography';
+
+import {Text} from './Text';
+
 import type {Meta, StoryObj} from '@storybook/react';
 
-import Text from './Text';
-import TYPOGRAPHY from '@/token/typography';
 
 const meta = {
   title: 'Components/Text',

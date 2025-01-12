@@ -1,5 +1,4 @@
 import {css} from '@emotion/react';
-
 import {attributeWithUnit} from '@utils/attribute';
 
 import {BoxProps} from './Box.type';

@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
+import {useTheme} from '@theme/DesignProvider';
 import React, {forwardRef} from 'react';
 
-import {useTheme} from '@theme/DesignProvider';
 
-import {ButtonProps} from './Button.type';
 import {buttonStyle} from './Button.style';
+import {ButtonProps} from './Button.type';
 
 
 export const Button: React.FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
@@ -27,5 +27,3 @@ export const Button: React.FC<ButtonProps> = forwardRef<HTMLButtonElement, Butto
     </button>
   );
 });
-
-export default Button;

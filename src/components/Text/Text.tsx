@@ -1,13 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import type {TextProps} from './Text.type';
-
-import React from 'react';
 
 import {useTheme} from '@theme/DesignProvider';
+import React from 'react';
+
 
 import {getSizeStyling} from './Text.style';
 
-const Text: React.FC<TextProps> = ({
+import type {TextProps} from './Text.type';
+
+export const Text: React.FC<TextProps> = ({
   size = 'body',
   textColor = 'black',
   children,
@@ -21,5 +22,3 @@ const Text: React.FC<TextProps> = ({
     </p>
   );
 };
-
-export default Text;

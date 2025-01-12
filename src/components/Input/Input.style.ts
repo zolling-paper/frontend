@@ -1,5 +1,4 @@
 import {css} from '@emotion/react';
-
 import {Theme} from '@theme/theme.type';
 
 export const inputLayoutStyle = css({
@@ -16,7 +15,13 @@ export const labelLayoutStyle = css({
   margin: '0 0 0.375rem 0',
 });
 
-const getBorderStyle = (isFocus: boolean, theme: Theme, isError?: boolean) =>
+interface InputStyleProps {
+  isFocus: boolean;
+  theme: Theme;
+  isError?: boolean;
+}
+
+const getBorderStyle = ({isFocus, theme, isError}: InputStyleProps) =>
   isError ? `0 0 0 1px ${theme.colors.error} inset` : isFocus ? `0 0 0 1px ${theme.colors.primary} inset` : 'none';
 
 export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolean) =>
@@ -36,7 +41,7 @@ export const labelTextAnimationStyle = (hasFocus: boolean, hasValue: boolean) =>
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
   });
 
-export const errorTextStyle = (theme: Theme, isError: boolean) =>
+export const errorTextStyle = ({theme, isError}: InputStyleProps) =>
   css({
     height: '1.125rem',
     color: theme.colors.onErrorContainer,
@@ -47,7 +52,7 @@ export const errorTextStyle = (theme: Theme, isError: boolean) =>
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
   });
 
-export const inputBoxStyle = (theme: Theme, isFocus: boolean, isError: boolean | undefined) =>
+export const inputBoxStyle = ({theme, isFocus, isError}: InputStyleProps) =>
   css([
     {
       display: 'flex',
@@ -57,7 +62,7 @@ export const inputBoxStyle = (theme: Theme, isFocus: boolean, isError: boolean |
       borderRadius: '1rem',
       backgroundColor: theme.colors.lightGrayContainer,
       boxSizing: 'border-box',
-      boxShadow: getBorderStyle(isFocus, theme, isError),
+      boxShadow: getBorderStyle({isFocus, theme, isError}),
     },
     inputBoxAnimationStyle(),
   ]);
@@ -68,7 +73,7 @@ export const inputBoxAnimationStyle = () =>
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
   });
 
-export const inputStyle = (theme: Theme) =>
+export const inputStyle = ({theme}: InputStyleProps) =>
   css(
     {
       display: 'flex',

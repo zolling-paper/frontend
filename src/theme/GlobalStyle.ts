@@ -19,6 +19,7 @@ export const GlobalStyle = css`
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    background-color: #F1F0F5;
   }
 
   /* Reapply the pointer cursor for anchor tags */
@@ -153,7 +154,8 @@ export const GlobalStyle = css`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    max-width: 768px;
+    max-width: 640px;
+    background-color: #FFFFFF;
     margin: 0 auto;
   }
 `;
