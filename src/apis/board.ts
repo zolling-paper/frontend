@@ -1,5 +1,5 @@
-import { http } from "@/utils/http";
 import { GetBoardRequestParam, GetBoardResponse, PostBoardRequest, PostBoardResponse } from "@/types/services";
+import { http } from "@/utils/http";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
