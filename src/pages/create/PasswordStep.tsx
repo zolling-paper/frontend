@@ -1,8 +1,10 @@
-import { VStack } from "@/components/Stack";
-import Top from "@/components/Top/Top";
+import { BoardFormData, Step } from "./page";
+
 import FixedBottomCTA from "@/components/FixedBottomCTA/FixedBottomCTA";
 import { Input } from "@/components/Input";
-import { BoardFormData, Step } from "./page";
+import { VStack } from "@/components/Stack";
+import Top from "@/components/Top/Top";
+
 
 interface PasswordStepProps {
   formData: BoardFormData;

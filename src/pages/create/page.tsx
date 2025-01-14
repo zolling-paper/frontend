@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
+
 import NameStep from './NameStep';
 import PasswordStep from './PasswordStep';
 import ShowDateStep from './ShowDateStep';
@@ -19,11 +20,15 @@ export default function CreatePage() {
     showDate: '',
   });
 
+  const handleSubmit = () => {
+    console.log(formData);
+  }
+
   return (
     <>
       {step === 'name' ? <NameStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
       {step === 'password' ? <PasswordStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
-      {step === 'showDate' ? <ShowDateStep formData={formData} setFormData={setFormData} onSubmit={()=>{}} /> : null}
+      {step === 'showDate' ? <ShowDateStep formData={formData} setFormData={setFormData} onSubmit={handleSubmit} /> : null}
     </>
   );
 }
