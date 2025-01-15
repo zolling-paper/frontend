@@ -1,15 +1,21 @@
 /** @jsxImportSource @emotion/react */
-import { TrackDetails, useKeenSlider } from "keen-slider/react";
-import { useEffect, useState } from "react";
+import {TrackDetails, useKeenSlider} from 'keen-slider/react';
+import {useEffect, useState} from 'react';
 
-import { Text } from "../Text";
-import { scrollContainerStyle, scrollerItemStyle, scrollerStyle } from "./DatePicker.style";
-import { ScrollerProps } from "./DatePicker.type";
+import {Text} from '../Text';
+import {scrollContainerStyle, scrollerItemStyle, scrollerStyle} from './DatePicker.style';
+import {ScrollerProps} from './DatePicker.type';
 
-import { useTheme } from "@/theme/DesignProvider";
+import {useTheme} from '@/theme/DesignProvider';
 
-
-export const Scroller = ({ options, initialValue, onChange, loop = false, degree, perspective = 'center' }: ScrollerProps) => {
+export const Scroller = ({
+  options,
+  initialIndex,
+  onChange,
+  loop = false,
+  degree,
+  perspective = 'center',
+}: ScrollerProps) => {
   const {theme} = useTheme();
   const slidesPerView = loop ? 9 : 1;
   const dialDegree = degree ?? 360 / options.length;
@@ -22,7 +28,7 @@ export const Scroller = ({ options, initialValue, onChange, loop = false, degree
       perView: slidesPerView,
     },
     vertical: true,
-    initial: initialValue,
+    initial: initialIndex ?? 0,
     loop,
     dragSpeed: (value: number) => {
       const height = options.length;
@@ -83,20 +89,10 @@ export const Scroller = ({ options, initialValue, onChange, loop = false, degree
   }
 
   return (
-    <div
-      css={scrollContainerStyle}
-      ref={sliderRef}
-    >
-      <div
-        css={scrollerStyle(perspective)}
-      >
+    <div css={scrollContainerStyle} ref={sliderRef}>
+      <div css={scrollerStyle(perspective)}>
         {getSlideValues().map(({value, style}) => (
-          <Text
-            key={value}
-            style={style}
-            size="subTitle"
-            css={scrollerItemStyle}
-          >
+          <Text key={value} style={style} size="subTitle" css={scrollerItemStyle}>
             {value}
           </Text>
         ))}

@@ -1,10 +1,10 @@
-export  interface DatePickerProps {
+export interface DatePickerProps {
   onChange: (date: Date) => void;
 }
 
 export interface ScrollerProps {
   options: number[];
-  initialValue?: number;
+  initialIndex?: number;
   onChange: (value: number) => void;
   loop?: boolean;
   degree?: number;
