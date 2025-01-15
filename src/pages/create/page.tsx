@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
+
 import NameStep from './NameStep';
 import PasswordStep from './PasswordStep';
 import ShowDateStep from './ShowDateStep';
