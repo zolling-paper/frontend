@@ -20,6 +20,18 @@ export const DatePicker = ({onChange}: DatePickerProps) => {
     return new Date(year, month, 0).getDate();
   };
 
+  const getYearsArray = () => {
+    return Array.from({length: 100}, (_, index) => index + now.getFullYear());
+  };
+
+  const getMonthsArray = () => {
+    return Array.from({length: 12}, (_, index) => index + 1);
+  };
+
+  const getDaysArray = (year: number, month: number) => {
+    return Array.from({length: getDaysInMonth(year, month)}, (_, index) => index + 1);
+  };
+
   useEffect(() => {
     onChange(new Date(year, month, day));
   }, [year, month, day, onChange]);
@@ -28,7 +40,7 @@ export const DatePicker = ({onChange}: DatePickerProps) => {
     <BottomSheet>
       <HStack gap="4rem" css={{height: '10rem'}}>
         <Scroller
-          options={Array.from({length: 12}, (_, index) => index + now.getFullYear())}
+          options={getYearsArray()}
           initialIndex={year - now.getFullYear()}
           onChange={setYear}
           degree={32}
@@ -36,14 +48,14 @@ export const DatePicker = ({onChange}: DatePickerProps) => {
         />
         <HStack gap="3rem" css={{height: '10rem'}}>
           <Scroller
-            options={Array.from({length: 12}, (_, index) => index + 1)}
+            options={getMonthsArray()}
             initialIndex={month - 1}
             onChange={setMonth}
             degree={32}
             perspective="center"
           />
           <Scroller
-            options={Array.from({length: getDaysInMonth(year, month)}, (_, index) => index + 1)}
+            options={getDaysArray(year, month)}
             initialIndex={day - 1}
             onChange={setDay}
             degree={32}
