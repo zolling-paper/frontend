@@ -3,7 +3,6 @@ import { useOverlay } from './useOverlay';
 import { Button } from '../Button';
 import { Container } from '../Container/Container';
 import { VStack } from '../Stack';
-import { HStack } from '../Stack/HStack';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

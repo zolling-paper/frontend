@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState } from "react";
-import BottomSheet from "../BottomSheet/BottomSheet";
-import { HStack} from "../Stack";
-import { Box } from "../Box";
 import { useTheme } from "@theme/DesignProvider";
-import { Scroller } from "./Scroller";
+import { useEffect, useState } from "react";
+
+import BottomSheet from "../BottomSheet/BottomSheet";
+import { Box } from "../Box";
+import { HStack} from "../Stack";
 import { backgroundStyle } from "./DatePicker.style";
 import { DatePickerProps } from "./DatePicker.type";
+import { Scroller } from "./Scroller";
 
 
 export const DatePicker = ({ onChange }: DatePickerProps) => {
@@ -18,7 +19,7 @@ export const DatePicker = ({ onChange }: DatePickerProps) => {
 
   useEffect(() => {
     onChange(new Date(year, month, day));
-  }, [year, month, day]);
+  }, [year, month, day, onChange]);
 
   return (
   <BottomSheet>

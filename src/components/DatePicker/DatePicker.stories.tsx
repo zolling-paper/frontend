@@ -26,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DemoComponent = () => {
-  const { open, close } = useOverlay();
+  const { open } = useOverlay();
 
   const handleOpenDatePicker = () => {
     const key = 'date-picker';

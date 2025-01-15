@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState } from "react";
-import { Text } from "../Text";
 import { TrackDetails, useKeenSlider } from "keen-slider/react";
-import { useTheme } from "@/theme/DesignProvider";
+import { useEffect, useState } from "react";
+
+import { Text } from "../Text";
 import { scrollContainerStyle, scrollerItemStyle, scrollerStyle } from "./DatePicker.style";
 import { ScrollerProps } from "./DatePicker.type";
+
+import { useTheme } from "@/theme/DesignProvider";
 
 
 export const Scroller = ({ options, initialValue, onChange, loop = false, degree, perspective = 'center' }: ScrollerProps) => {
