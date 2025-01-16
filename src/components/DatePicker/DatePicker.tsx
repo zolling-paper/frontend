@@ -45,7 +45,6 @@ export const DatePicker = ({
 
   useEffect(() => {
     onChange(date);
-    console.log(date);
   }, [date]);
 
   return (

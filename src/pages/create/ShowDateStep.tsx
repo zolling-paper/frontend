@@ -26,7 +26,6 @@ export default function ShowDateStep({formData, setFormData}: ShowDateStepProps)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
   };
 
   return (
