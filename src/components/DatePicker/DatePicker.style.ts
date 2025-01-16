@@ -1,16 +1,25 @@
-import { css } from "@emotion/react";
+import {css} from '@emotion/react';
 
-import { Perspective } from "./DatePicker.type";
+import {Perspective} from './DatePicker.type';
+
+export const datePickerAlignStyle = css`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+`;
 
 export const backgroundStyle = css`
-  background: linear-gradient(to bottom, 
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,0) 25%,
-    rgba(255,255,255,0) 75%,
-    rgba(255,255,255,1) 100%
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(255, 255, 255, 1) 100%
   );
-  pointer-events: none;
-`
+  ${datePickerAlignStyle}
+`;
 
 export const scrollContainerStyle = css`
   width: calc(100% + 12px);
@@ -39,11 +48,13 @@ export const scrollerStyle = (perspective: Perspective) => css`
   height: 16%;
   width: 100%;
   padding: 0 6px;
-  ${perspective === 'right' && css`
+  ${perspective === 'right' &&
+  css`
     perspective-origin: calc(50% - 100px) 50%;
     transform: translateX(-10px);
   `}
-  ${perspective === 'left' && css`
+  ${perspective === 'left' &&
+  css`
     perspective-origin: calc(50% + 100px) 50%;
     transform: translateX(10px);
   `}
@@ -58,4 +69,3 @@ export const scrollerItemStyle = css`
   height: 100%;
   backface-visibility: hidden;
 `;
-

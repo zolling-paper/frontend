@@ -1,5 +1,12 @@
+export type PickerDate = {
+  year: number;
+  month: number;
+  day: number;
+};
+
 export interface DatePickerProps {
-  onChange: (date: Date) => void;
+  onChange: (date: PickerDate) => void;
+  initialDate?: PickerDate;
 }
 
 export interface ScrollerProps {
