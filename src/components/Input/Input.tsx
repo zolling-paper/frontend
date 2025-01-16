@@ -4,9 +4,14 @@ import {Text} from '@components/Text';
 import {useTheme} from '@theme/DesignProvider';
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 
-
-
-import {inputBoxStyle, inputStyle, labelTextStyle, errorTextStyle, inputLayoutStyle, labelLayoutStyle} from './Input.style';
+import {
+  inputBoxStyle,
+  inputStyle,
+  labelTextStyle,
+  errorTextStyle,
+  inputLayoutStyle,
+  labelLayoutStyle,
+} from './Input.style';
 import {InputProps} from './Input.type';
 
 export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -49,7 +54,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
         <div css={labelLayoutStyle}>
           {labelText && (
             <Text size="caption" css={labelTextStyle(theme, hasFocus, hasValue)}>
-              {labelText}
+              {hasFocus || hasValue ? labelText : ''}
             </Text>
           )}
           {errorText && (
@@ -59,22 +64,27 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
           )}
         </div>
       )}
-        <div css={inputBoxStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}>
-          <input
-            css={inputStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}
-            ref={inputRef}
-            value={value}
-            onChange={onChange}
-            placeholder={value ? '' : placeholder}
-            autoFocus={autoFocus}
-            {...htmlProps}
-          />
-          {onDelete && value && hasFocus && (
-            <button type="button" onClick={onDelete} onKeyDown={(e) => e.key === 'Enter' && onDelete()} aria-label="입력 내용 모두 지우기">
-              <Icon iconType="inputDelete" />
-            </button>
-          )}
-        </div>
+      <div css={inputBoxStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}>
+        <input
+          css={inputStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}
+          ref={inputRef}
+          value={value}
+          onChange={onChange}
+          placeholder={hasFocus ? placeholder : labelText}
+          autoFocus={autoFocus}
+          {...htmlProps}
+        />
+        {onDelete && value && hasFocus && (
+          <button
+            type="button"
+            onClick={onDelete}
+            onKeyDown={e => e.key === 'Enter' && onDelete()}
+            aria-label="입력 내용 모두 지우기"
+          >
+            <Icon iconType="inputDelete" />
+          </button>
+        )}
+      </div>
     </div>
   );
 });
