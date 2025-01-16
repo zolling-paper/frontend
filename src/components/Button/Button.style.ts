@@ -103,6 +103,7 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
       }),
       getHoverAndActiveBackground(theme.colors.tertiary),
     ],
+    ghost: [getHoverAndActiveBackground(theme.colors.white)],
     destructive: [
       css({
         backgroundColor: theme.colors.error,
