@@ -43,6 +43,7 @@ export const hStackStyle = ({gap, justify, p, m, br, b, bg}: HStackProps) => {
   return css`
     flex-direction: row;
     display: flex;
+    width: 100%;
     gap: ${gapValue};
     justify-content: ${justify};
     align-items: center;
@@ -66,6 +67,7 @@ export const vStackStyle = ({gap, align, p, m, br, b, bg}: VStackProps) => {
   return css`
     flex-direction: column;
     display: flex;
+    width: 100%;
     gap: ${gapValue};
     justify-content: center;
     align-items: ${align};
