@@ -8,7 +8,7 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   parameters: {
-    // layout: 'centered',
+    layout: 'centered',
   },
   argTypes: {
     variants: {
@@ -20,6 +20,11 @@ const meta = {
       description: '버튼의 크기를 설정합니다',
       control: {type: 'select'},
       options: ['sm', 'md', 'lg'],
+    },
+    display: {
+      description: '버튼의 레이아웃을 설정합니다',
+      control: {type: 'select'},
+      options: ['block', 'full'],
     },
     disabled: {
       description: '버튼의 비활성화 여부를 설정합니다',
@@ -33,6 +38,7 @@ const meta = {
   args: {
     variants: 'primary',
     size: 'md',
+    display: 'block',
     disabled: false,
     children: '버튼',
   },
