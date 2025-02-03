@@ -1,5 +1,7 @@
+import {errorTextAnimationStyle, labelTextAnimationStyle} from './../animation/animation';
 import {css} from '@emotion/react';
 import {Theme} from '@theme/theme.type';
+import {commonTransition} from '../animation/animation';
 
 export const inputLayoutStyle = css({
   display: 'flex',
@@ -30,27 +32,23 @@ export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolea
       height: '1.125rem',
       color: theme.colors.gray,
     },
+    !hasFocus &&
+      !hasValue && {
+        transform: 'translate(0.25rem, 1rem)',
+        scale: '1.5',
+        opacity: '0',
+      },
     labelTextAnimationStyle(hasFocus, hasValue),
   ]);
 
-export const labelTextAnimationStyle = (hasFocus: boolean, hasValue: boolean) =>
-  css({
-    opacity: hasFocus || hasValue ? '1' : '0',
-
-    transition: '0.2s',
-    transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
-  });
-
 export const errorTextStyle = ({theme, isError}: InputStyleProps) =>
-  css({
-    height: '1.125rem',
-    color: theme.colors.onErrorContainer,
-
-    opacity: isError ? '1' : '0',
-
-    transition: '0.2s',
-    transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
-  });
+  css([
+    {
+      height: '1.125rem',
+      color: theme.colors.onErrorContainer,
+    },
+    errorTextAnimationStyle(isError ?? false),
+  ]);
 
 export const inputBoxStyle = ({theme, isFocus, isError}: InputStyleProps) =>
   css([
@@ -64,17 +62,13 @@ export const inputBoxStyle = ({theme, isFocus, isError}: InputStyleProps) =>
       boxSizing: 'border-box',
       boxShadow: getBorderStyle({isFocus, theme, isError}),
     },
-    inputBoxAnimationStyle(),
+    inputBoxAnimationStyle,
   ]);
 
-export const inputBoxAnimationStyle = () =>
-  css({
-    transition: '0.2s',
-    transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
-  });
+export const inputBoxAnimationStyle = commonTransition;
 
 export const inputStyle = ({theme}: InputStyleProps) =>
-  css(
+  css([
     {
       display: 'flex',
       width: '100%',
@@ -85,4 +79,4 @@ export const inputStyle = ({theme}: InputStyleProps) =>
       },
     },
     {...theme.typography.body},
-  );
+  ]);

@@ -10,3 +10,9 @@ export type Paper = {
   name: string;
   content: string;
 };
+
+export type YMD = {
+  year: number;
+  month: number;
+  day: number;
+};

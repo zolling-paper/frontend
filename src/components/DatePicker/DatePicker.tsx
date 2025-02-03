@@ -1,71 +1,105 @@
 /** @jsxImportSource @emotion/react */
 import {useTheme} from '@theme/DesignProvider';
-import {useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 
-import BottomSheet from '../BottomSheet/BottomSheet';
 import {Box} from '../Box';
 import {HStack} from '../Stack';
-import {backgroundStyle} from './DatePicker.style';
-import {DatePickerProps} from './DatePicker.type';
+import {backgroundStyle, datePickerAlignStyle} from './DatePicker.style';
+import {DatePickerProps, PickerDate} from './DatePicker.type';
 import {Scroller} from './Scroller';
 
-export const DatePicker = ({onChange}: DatePickerProps) => {
-  const now = new Date();
-  const [year, setYear] = useState<number>(now.getFullYear());
-  const [month, setMonth] = useState<number>(now.getMonth());
-  const [day, setDay] = useState<number>(now.getDate());
+export const DatePicker = ({
+  onChange,
+  initialDate = {year: new Date().getFullYear(), month: 0, day: 0},
+}: DatePickerProps) => {
   const {theme} = useTheme();
+  const [date, setDate] = useState<PickerDate>(initialDate);
 
-  const getDaysInMonth = (year: number, month: number) => {
-    return new Date(year, month + 1, 0).getDate();
+  const handleDateChange = useCallback(
+    (newDate: PickerDate) => {
+      setDate(newDate);
+      onChange(newDate);
+    },
+    [onChange],
+  );
+
+  const handleChangeYear = useCallback(
+    (year: number) => {
+      handleDateChange({...date, year});
+    },
+    [date, handleDateChange],
+  );
+
+  const handleChangeMonth = useCallback(
+    (month: number) => {
+      handleDateChange({...date, month});
+    },
+    [date, handleDateChange],
+  );
+
+  const handleChangeDay = useCallback(
+    (day: number) => {
+      handleDateChange({...date, day});
+    },
+    [date, handleDateChange],
+  );
+
+  const getDaysInMonth = () => {
+    return new Date(date.year, date.month, 0).getDate();
   };
 
   const getYearsArray = () => {
-    return Array.from({length: 100}, (_, index) => index + now.getFullYear());
+    return Array.from({length: 10}, (_, index) => index + new Date().getFullYear());
   };
 
   const getMonthsArray = () => {
     return Array.from({length: 12}, (_, index) => index + 1);
   };
 
-  const getDaysArray = (year: number, month: number) => {
-    return Array.from({length: getDaysInMonth(year, month)}, (_, index) => index + 1);
+  const getDaysArray = () => {
+    return Array.from({length: getDaysInMonth()}, (_, index) => index + 1);
   };
 
-  useEffect(() => {
-    onChange(new Date(year, month, day));
-  }, [year, month, day, onChange]);
-
   return (
-    <BottomSheet>
-      <HStack gap="4rem" css={{height: '10rem'}}>
+    <div css={{position: 'relative', height: '15rem'}}>
+      <HStack
+        gap="4rem"
+        p="0 4rem"
+        css={{height: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}
+      >
         <Scroller
           options={getYearsArray()}
-          initialIndex={year - now.getFullYear()}
-          onChange={setYear}
+          initialIndex={date.year - new Date().getFullYear()}
+          onChange={handleChangeYear}
           degree={32}
           perspective="left"
         />
-        <HStack gap="3rem" css={{height: '10rem'}}>
-          <Scroller
-            options={getMonthsArray()}
-            initialIndex={month - 1}
-            onChange={setMonth}
-            degree={32}
-            perspective="center"
-          />
-          <Scroller
-            options={getDaysArray(year, month)}
-            initialIndex={day - 1}
-            onChange={setDay}
-            degree={32}
-            perspective="right"
-          />
-        </HStack>
+        <Scroller
+          options={getMonthsArray()}
+          initialIndex={date.month - 1}
+          onChange={handleChangeMonth}
+          degree={32}
+          perspective="center"
+        />
+        <Scroller
+          options={getDaysArray()}
+          initialIndex={date.day - 1}
+          onChange={handleChangeDay}
+          degree={32}
+          perspective="right"
+        />
+        <Box
+          bg={theme.colors.grayContainer}
+          center
+          w="calc(100% - 2rem)"
+          br="1rem"
+          h="2.5rem"
+          z={-10}
+          css={datePickerAlignStyle}
+        />
+        <Box bg={theme.colors.white} center w="100%" h="100%" z={-20} css={datePickerAlignStyle} />
+        <Box w="100%" h="100%" z={10} css={backgroundStyle} />
       </HStack>
-      <Box fixed bg={theme.colors.grayContainer} center w="calc(100% - 4rem)" br="1rem" h="2.5rem" z={-10} />
-      <Box fixed bg={theme.colors.white} center w="100%" h="10rem" z={-20} />
-      <Box fixed center w="100%" h="10rem" z={10} css={backgroundStyle} />
-    </BottomSheet>
+    </div>
   );
 };

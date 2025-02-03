@@ -17,7 +17,7 @@ const meta = {
     },
     size: {
       description: '버튼의 크기를 설정합니다',
-      control: {type: 'select'}, 
+      control: {type: 'select'},
       options: ['small', 'medium', 'semiLarge', 'large'],
     },
     disabled: {
@@ -27,11 +27,11 @@ const meta = {
     children: {
       description: '버튼의 내용을 설정합니다',
       control: {type: 'text'},
-    }
+    },
   },
   args: {
     variants: 'primary',
-    size: 'medium', 
+    size: 'medium',
     disabled: false,
     children: '버튼',
   },
@@ -57,7 +57,7 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: {
-    variants: 'tertiary', 
+    variants: 'tertiary',
     children: '세 번째 버튼',
   },
 };
