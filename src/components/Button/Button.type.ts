@@ -1,7 +1,7 @@
 import {Theme} from '@theme/theme.type';
 
-export type ButtonSize = 'small' | 'medium' | 'semiLarge' | 'large';
-export type ButtonVariants = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'destructive';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonVariants = 'primary' | 'secondary' | 'ghost';
 
 export interface ButtonStyleProps {
   variants?: ButtonVariants;

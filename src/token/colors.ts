@@ -1,5 +1,6 @@
 const PRIMITIVE_COLORS = {
   white: '#FFFFFF',
+  black: '#282428',
   purple: {
     50: '#f4e8ff',
     100: '#e0c7fe',
@@ -13,52 +14,28 @@ const PRIMITIVE_COLORS = {
     900: '#5100cd',
   },
   pink: {
-    50: '#ffe1ff',
-    100: '#feafd9',
-    200: '#ff75bf',
-    300: '#fc28a1',
-    400: '#f60087',
-    500: '#f2006d',
-    600: '#e1006a',
-    700: '#ca0065',
-    800: '#b30062',
-    900: '#8b005b',
-  },
-  yellow: {
-    50: '#fdffe9',
-    100: '#f7fdc5',
-    200: '#f0fb9d',
-    300: '#e8f972',
-    400: '#ecff59',
-    500: '#e5fb31',
-    600: '#daeb2e',
-    700: '#c9d323',
-    800: '#b9bb17',
-    900: '#9e9305',
-  },
-  green: {
-    50: '#f4ffe8',
-    100: '#e4ffc6',
-    200: '#d1ff9f',
-    300: '#bfff75',
-    400: '#b0fd51',
-    500: '#a4f932',
-    600: '#9de728',
-    700: '#90cf18',
-    800: '#85b704',
-    900: '#748f00',
+    50: '#ffe7ff',
+    100: '#fec3fd',
+    200: '#ff97fd',
+    300: '#f968f8',
+    400: '#ef41ee',
+    500: '#e606e5',
+    600: '#d409df',
+    700: '#be00d8',
+    800: '#ab00d2',
+    900: '#8601c6',
   },
   gray: {
-    50: '#F9F8FD',
-    100: '#F1F0F5',
-    200: '#E7E6EB',
-    300: '#D6D5DA',
-    400: '#B2B1B6',
-    500: '#929195',
-    600: '#6A696D',
-    700: '#56555A',
-    800: '#38373B',
-    900: '#18171B',
+    50: '#fff9ff',
+    100: '#faf4fa',
+    200: '#f5eff5',
+    300: '#e8e3e8',
+    400: '#c6c0c8',
+    500: '#a7a2a7',
+    600: '#7e787e',
+    700: '#696469',
+    800: '#4a454a',
+    900: '#282428',
   },
 };
 
@@ -66,47 +43,35 @@ type Color = string;
 
 export type ColorKey =
   | 'white'
+  | 'background'
+  | 'lightGray'
+  | 'gray'
   | 'black'
   | 'primary'
-  | 'onPrimary'
+  | 'primaryContainer'
   | 'secondary'
-  | 'onSecondary'
-  | 'tertiary'
-  | 'onTertiary'
-  | 'gray'
-  | 'darkGray'
-  | 'grayContainer'
-  | 'lightGrayContainer'
-  | 'error'
-  | 'errorContainer'
-  | 'onErrorContainer'
-  | 'warn'
-  | 'complete';
+  | 'secondaryContainer';
+export type GradientKey = 'primary' | 'primaryContainer' | 'secondary' | 'secondaryContainer';
 
 export type ColorTokens = Record<ColorKey, Color>;
+export type GradientTokens = Record<GradientKey, string>;
 
-// TODO: (@soha) 대괄호 사용에 대해 논의
-export const COLORS: ColorTokens = {
+export const SEMANTIC_COLORS: ColorTokens = {
   white: PRIMITIVE_COLORS.white,
-  black: PRIMITIVE_COLORS.gray[700],
+  background: PRIMITIVE_COLORS.gray[50],
+  lightGray: PRIMITIVE_COLORS.gray[300],
+  gray: PRIMITIVE_COLORS.gray[500],
+  black: PRIMITIVE_COLORS.gray[800],
 
-  primary: PRIMITIVE_COLORS.purple[300],
-  onPrimary: PRIMITIVE_COLORS.white,
-  secondary: PRIMITIVE_COLORS.purple[50],
-  onSecondary: PRIMITIVE_COLORS.purple[600],
-  tertiary: PRIMITIVE_COLORS.gray[200],
-  onTertiary: PRIMITIVE_COLORS.gray[700],
-
-  gray: PRIMITIVE_COLORS.gray[400],
-  darkGray: PRIMITIVE_COLORS.gray[500],
-  grayContainer: PRIMITIVE_COLORS.gray[100],
-  lightGrayContainer: PRIMITIVE_COLORS.gray[50],
-
-  error: PRIMITIVE_COLORS.pink[200],
-  errorContainer: PRIMITIVE_COLORS.pink[50],
-  onErrorContainer: PRIMITIVE_COLORS.pink[300],
-  warn: PRIMITIVE_COLORS.yellow[400],
-  complete: PRIMITIVE_COLORS.green[300],
+  primary: PRIMITIVE_COLORS.pink[200],
+  primaryContainer: PRIMITIVE_COLORS.pink[50],
+  secondary: PRIMITIVE_COLORS.purple[600],
+  secondaryContainer: PRIMITIVE_COLORS.purple[200],
 };
 
-export const PRIMARY_COLORS = PRIMITIVE_COLORS.purple;
+export const GRADIENT_COLORS: GradientTokens = {
+  primary: `linear-gradient(180deg, ${SEMANTIC_COLORS.primaryContainer} 0%, ${SEMANTIC_COLORS.primary} 100%)`,
+  primaryContainer: `linear-gradient(180deg, ${SEMANTIC_COLORS.white} 0%, ${SEMANTIC_COLORS.primaryContainer} 100%)`,
+  secondary: `linear-gradient(180deg, ${SEMANTIC_COLORS.secondaryContainer} 0%, ${SEMANTIC_COLORS.secondary} 100%)`,
+  secondaryContainer: `linear-gradient(180deg, ${SEMANTIC_COLORS.white} 0%, ${SEMANTIC_COLORS.secondaryContainer} 100%)`,
+};

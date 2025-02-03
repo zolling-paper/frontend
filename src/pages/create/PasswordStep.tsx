@@ -92,7 +92,7 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
       <form onSubmit={handleSubmit} css={{width: '100%'}}>
         <Input
           labelText="비밀번호"
-          placeholder="ex) 000000"
+          placeholder="ex) 0000"
           value={formData.password}
           onChange={handleChange}
           hasError={hasError}

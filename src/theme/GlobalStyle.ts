@@ -1,4 +1,6 @@
 import {css} from '@emotion/react';
+import {Theme} from './theme.type';
+import {SEMANTIC_COLORS} from '../token/colors';
 
 // reset css -> index css
 export const GlobalStyle = css`
@@ -19,7 +21,7 @@ export const GlobalStyle = css`
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    background-color: #F1F0F5;
+    background-color: ${SEMANTIC_COLORS.background};
   }
 
   /* Reapply the pointer cursor for anchor tags */
@@ -138,6 +140,7 @@ export const GlobalStyle = css`
 
   body {
     font-family:
+      'NeoDunggeunmo',
       'Pretendard',
       -apple-system,
       BlinkMacSystemFont,
@@ -155,7 +158,7 @@ export const GlobalStyle = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     max-width: 640px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     margin: 0 auto;
   }
 `;

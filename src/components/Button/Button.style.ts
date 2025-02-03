@@ -22,57 +22,43 @@ const getButtonDefaultStyle = (theme: Theme) =>
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
     whiteSpace: 'nowrap',
 
-    '&:focus-visible': {
-      outline: `2px solid ${theme.colors.complete}`,
-      outlineOffset: '1px',
-    },
     '&:disabled': {
-      background: theme.colors.grayContainer,
-      color: theme.colors.onPrimary,
+      background: theme.colors.lightGray,
+      border: 'none',
+      color: theme.colors.white,
       cursor: 'default',
     },
   });
 
 const getHoverAndActiveBackground = (color: string) =>
   css({
-    ':not(:disabled)': {
-      '&:hover': {
-        background: setLighter(color, 0.15),
-      },
-      '&:active': {
-        background: setDarker(color, 0.15),
-      },
-    },
+    // ':not(:disabled)': {
+    //   '&:hover': {
+    //     background: setLighter(color, 0.15),
+    //   },
+    //   '&:active': {
+    //     background: setDarker(color, 0.15),
+    //   },
+    // },
   });
 
 const getButtonSizeStyle = (size: ButtonSize) => {
   const style = {
-    small: css({
+    sm: css({
       padding: '0.5rem 0.75rem',
       borderRadius: '0.5rem',
-      fontFamily: 'Pretendard',
       fontSize: '0.75rem',
-      fontWeight: '400',
+      fontWeight: '600',
     }),
-    medium: css({
+    md: css({
       padding: '0.75rem 1rem',
       borderRadius: '0.75rem',
-      fontFamily: 'Pretendard',
       fontSize: '1rem',
       fontWeight: '700',
     }),
-    semiLarge: css({
-      padding: '0.75rem 1rem',
-      borderRadius: '1rem',
-      fontFamily: 'Pretendard',
-      fontSize: '1rem',
-      fontWeight: '700',
-      height: '3rem',
-    }),
-    large: css({
+    lg: css({
       padding: '1rem 1.5rem',
       borderRadius: '1rem',
-      fontFamily: 'Pretendard',
       fontSize: '1.25rem',
       fontWeight: '700',
     }),
@@ -85,33 +71,21 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
   const style = {
     primary: [
       css({
-        background: theme.colors.primary,
-        color: theme.colors.onPrimary,
+        background: theme.gradients.primary,
+        color: theme.colors.secondary,
+        border: `2px solid ${theme.colors.secondary}`,
       }),
       getHoverAndActiveBackground(theme.colors.primary),
     ],
     secondary: [
       css({
-        background: theme.colors.secondary,
-        color: theme.colors.onSecondary,
+        background: theme.gradients.secondaryContainer,
+        color: theme.colors.secondary,
+        border: `2px solid ${theme.colors.secondary}`,
       }),
       getHoverAndActiveBackground(theme.colors.secondary),
     ],
-    tertiary: [
-      css({
-        background: theme.colors.tertiary,
-        color: theme.colors.onTertiary,
-      }),
-      getHoverAndActiveBackground(theme.colors.tertiary),
-    ],
     ghost: [getHoverAndActiveBackground(theme.colors.white)],
-    destructive: [
-      css({
-        background: theme.colors.error,
-        color: theme.colors.onPrimary,
-      }),
-      getHoverAndActiveBackground(theme.colors.error),
-    ],
   };
 
   return style[variants];

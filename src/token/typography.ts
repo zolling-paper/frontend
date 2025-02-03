@@ -5,67 +5,77 @@ export interface Typography {
   fontWeight: string;
 }
 
-export type TypographyTokenKey = 'head' | 'title' | 'subTitle' | 'bodyBold' | 'body' | 'smallBodyBold' | 'smallBody' | 'captionBold' | 'caption' | 'tiny';
+export type TypographyTokenKey =
+  | 'head'
+  | 'title'
+  | 'subTitle'
+  | 'bodyBold'
+  | 'body'
+  | 'smallBodyBold'
+  | 'smallBody'
+  | 'captionBold'
+  | 'caption'
+  | 'tiny';
 
 export type TypographyTokens = Record<TypographyTokenKey, Typography>;
 
 export const TYPOGRAPHY: TypographyTokens = {
   head: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '3rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   title: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '2rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   subTitle: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '1.5rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   bodyBold: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '1rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   body: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '1rem',
     lineHeight: '1.5',
     fontWeight: '400',
   },
   smallBodyBold: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '0.875rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   smallBody: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '0.875rem',
     lineHeight: '1.5',
     fontWeight: '400',
   },
   captionBold: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '0.75rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   caption: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '0.75rem',
     lineHeight: '1.5',
     fontWeight: '400',
   },
   tiny: {
-    fontFamily: 'Pretendard',
+    fontFamily: 'NeoDunggeunmo',
     fontSize: '0.625rem',
     lineHeight: '1.5',
     fontWeight: '400',

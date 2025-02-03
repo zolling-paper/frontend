@@ -24,7 +24,7 @@ interface InputStyleProps {
 }
 
 const getBorderStyle = ({isFocus, theme, isError}: InputStyleProps) =>
-  isError ? `0 0 0 1px ${theme.colors.error} inset` : isFocus ? `0 0 0 1px ${theme.colors.primary} inset` : 'none';
+  isError ? `0 0 0 1px ${theme.colors.primary} inset` : isFocus ? `0 0 0 1px ${theme.colors.secondary} inset` : 'none';
 
 export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolean) =>
   css([
@@ -45,7 +45,7 @@ export const errorTextStyle = ({theme, isError}: InputStyleProps) =>
   css([
     {
       height: '1.125rem',
-      color: theme.colors.onErrorContainer,
+      color: theme.colors.primary,
     },
     errorTextAnimationStyle(isError ?? false),
   ]);
@@ -58,7 +58,7 @@ export const inputBoxStyle = ({theme, isFocus, isError}: InputStyleProps) =>
       gap: '1rem',
       padding: '0.75rem 1rem',
       borderRadius: '1rem',
-      backgroundColor: theme.colors.lightGrayContainer,
+      background: theme.gradients.primaryContainer,
       boxSizing: 'border-box',
       boxShadow: getBorderStyle({isFocus, theme, isError}),
     },
@@ -72,11 +72,11 @@ export const inputStyle = ({theme}: InputStyleProps) =>
     {
       display: 'flex',
       width: '100%',
-      color: theme.colors.black,
+      color: theme.colors.secondary,
 
       '&:placeholder': {
-        color: theme.colors.gray,
+        color: theme.colors.lightGray,
       },
     },
-    {...theme.typography.body},
+    // {...theme.typography.body},
   ]);

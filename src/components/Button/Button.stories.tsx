@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import {Button} from './Button';
 
 import type {Meta, StoryObj} from '@storybook/react';
@@ -7,18 +8,18 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   parameters: {
-    layout: 'centered',
+    // layout: 'centered',
   },
   argTypes: {
     variants: {
       description: '버튼의 스타일을 설정합니다',
       control: {type: 'select'},
-      options: ['primary', 'secondary', 'tertiary', 'destructive'],
+      options: ['primary', 'secondary', 'ghost'],
     },
     size: {
       description: '버튼의 크기를 설정합니다',
       control: {type: 'select'},
-      options: ['small', 'medium', 'semiLarge', 'large'],
+      options: ['sm', 'md', 'lg'],
     },
     disabled: {
       description: '버튼의 비활성화 여부를 설정합니다',
@@ -31,7 +32,7 @@ const meta = {
   },
   args: {
     variants: 'primary',
-    size: 'medium',
+    size: 'md',
     disabled: false,
     children: '버튼',
   },
@@ -55,44 +56,30 @@ export const Secondary: Story = {
   },
 };
 
-export const Tertiary: Story = {
+export const Ghost: Story = {
   args: {
-    variants: 'tertiary',
+    variants: 'ghost',
     children: '세 번째 버튼',
-  },
-};
-
-export const Destructive: Story = {
-  args: {
-    variants: 'destructive',
-    children: '삭제 버튼',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
+    size: 'sm',
     children: '작은 버튼',
   },
 };
 
 export const Medium: Story = {
   args: {
-    size: 'medium',
+    size: 'md',
     children: '중간 버튼',
-  },
-};
-
-export const SemiLarge: Story = {
-  args: {
-    size: 'semiLarge',
-    children: '약간 큰 버튼',
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'large',
+    size: 'lg',
     children: '큰 버튼',
   },
 };
