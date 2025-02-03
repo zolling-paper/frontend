@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import {css} from '@emotion/react';
 
 export const fixedBottomCTAStyle = css`
   position: absolute;
@@ -10,7 +10,3 @@ export const fixedBottomCTAStyle = css`
   right: 0;
   z-index: 20;
 `;
-
-export const buttonStyle = css({
-  width: '100%',
-});

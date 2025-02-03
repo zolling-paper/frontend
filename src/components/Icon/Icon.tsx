@@ -19,3 +19,5 @@ export const Icon = ({iconColor, iconType, ...htmlProps}: IconProps) => {
     </div>
   );
 };
+
+export default Icon;

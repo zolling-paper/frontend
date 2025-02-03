@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <Container>
       <HStack justify="space-between">
-        <Button size="small" variants="ghost">
+        <Button size="sm" variants="ghost">
           <Text size="bodyBold" textColor="gray">
             뒤로가기
           </Text>
@@ -17,3 +17,5 @@ export const Header = () => {
     </Container>
   );
 };
+
+export default Header;

@@ -1,18 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import {useTheme} from '@/theme/DesignProvider';
-import {Button, ButtonProps} from '../Button';
-import {HStack} from '../Stack';
-import {buttonStyle, fixedBottomCTAStyle} from './FixedBottomCTA.style';
+import {fixedBottomCTAStyle} from './FixedBottomCTA.style';
+import {VStack} from '../Stack';
 
-export const FixedBottomCTA = ({children, ...buttonProps}: ButtonProps) => {
+export const FixedBottomCTA = ({children}: {children: React.ReactNode}) => {
   const {theme} = useTheme();
 
   return (
-    <HStack p="1.5rem 1.5rem 2rem" bg={theme.colors.background} css={fixedBottomCTAStyle}>
-      <Button {...buttonProps} size="lg" css={buttonStyle}>
-        {children}
-      </Button>
-    </HStack>
+    <VStack p="1.5rem 1.5rem 2rem" gap="1rem" bg={theme.colors.background} css={fixedBottomCTAStyle}>
+      {children}
+    </VStack>
   );
 };
 

@@ -88,3 +88,5 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     </div>
   );
 });
+
+export default Input;
