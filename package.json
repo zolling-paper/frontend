@@ -14,9 +14,10 @@
   "dependencies": {
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
-    "keen-slider": "^6.8.6",
+    "@react-pixel-ui/use-pixelated-css": "^0.1.4",
     "@tanstack/react-query": "^5.64.1",
     "axios": "^1.7.9",
+    "keen-slider": "^6.8.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2"

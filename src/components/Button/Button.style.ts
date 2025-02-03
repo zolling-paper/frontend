@@ -5,11 +5,11 @@ import {setDarker, setLighter} from '@utils/colors';
 import {ButtonStyleProps, ButtonSize, ButtonVariants} from './Button.type';
 
 export const buttonStyle = (props: Required<ButtonStyleProps>) => {
-  return [
+  return css([
     getButtonDefaultStyle(props.theme),
     getButtonSizeStyle(props.size),
     getButtonVariantsStyle(props.variants, props.theme),
-  ];
+  ]);
 };
 
 const getButtonDefaultStyle = (theme: Theme) =>
@@ -21,12 +21,15 @@ const getButtonDefaultStyle = (theme: Theme) =>
     transition: '0.2s',
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
     whiteSpace: 'nowrap',
+
+    
+
     '&:focus-visible': {
       outline: `2px solid ${theme.colors.complete}`,
       outlineOffset: '1px',
     },
     '&:disabled': {
-      backgroundColor: theme.colors.grayContainer,
+      background: theme.colors.grayContainer,
       color: theme.colors.onPrimary,
       cursor: 'default',
     },
@@ -36,10 +39,10 @@ const getHoverAndActiveBackground = (color: string) =>
   css({
     ':not(:disabled)': {
       '&:hover': {
-        backgroundColor: setLighter(color, 0.15),
+        background: setLighter(color, 0.15),
       },
       '&:active': {
-        backgroundColor: setDarker(color, 0.15),
+        background: setDarker(color, 0.15),
       },
     },
   });
@@ -80,25 +83,30 @@ const getButtonSizeStyle = (size: ButtonSize) => {
   return style[size];
 };
 
+/* 배경 그라데이션 */
+    background: 'linear-gradient(180deg, #FFDCFF 0%, #FF97FE 100%)',
+    /* 테두리 스타일 */
+    border: '2px solid #C782FF',
+
 const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
   const style = {
     primary: [
       css({
-        backgroundColor: theme.colors.primary,
+        background: theme.colors.primary,
         color: theme.colors.onPrimary,
       }),
       getHoverAndActiveBackground(theme.colors.primary),
     ],
     secondary: [
       css({
-        backgroundColor: theme.colors.secondary,
+        background: theme.colors.secondary,
         color: theme.colors.onSecondary,
       }),
       getHoverAndActiveBackground(theme.colors.secondary),
     ],
     tertiary: [
       css({
-        backgroundColor: theme.colors.tertiary,
+        background: theme.colors.tertiary,
         color: theme.colors.onTertiary,
       }),
       getHoverAndActiveBackground(theme.colors.tertiary),
@@ -106,7 +114,7 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
     ghost: [getHoverAndActiveBackground(theme.colors.white)],
     destructive: [
       css({
-        backgroundColor: theme.colors.error,
+        background: theme.colors.error,
         color: theme.colors.onPrimary,
       }),
       getHoverAndActiveBackground(theme.colors.error),

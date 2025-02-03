@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import {useTheme} from '@theme/DesignProvider';
-import {useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import {Box} from '../Box';
 import {HStack} from '../Stack';
@@ -14,6 +14,35 @@ export const DatePicker = ({
 }: DatePickerProps) => {
   const {theme} = useTheme();
   const [date, setDate] = useState<PickerDate>(initialDate);
+
+  const handleDateChange = useCallback(
+    (newDate: PickerDate) => {
+      setDate(newDate);
+      onChange(newDate);
+    },
+    [onChange],
+  );
+
+  const handleChangeYear = useCallback(
+    (year: number) => {
+      handleDateChange({...date, year});
+    },
+    [date, handleDateChange],
+  );
+
+  const handleChangeMonth = useCallback(
+    (month: number) => {
+      handleDateChange({...date, month});
+    },
+    [date, handleDateChange],
+  );
+
+  const handleChangeDay = useCallback(
+    (day: number) => {
+      handleDateChange({...date, day});
+    },
+    [date, handleDateChange],
+  );
 
   const getDaysInMonth = () => {
     return new Date(date.year, date.month, 0).getDate();
@@ -30,22 +59,6 @@ export const DatePicker = ({
   const getDaysArray = () => {
     return Array.from({length: getDaysInMonth()}, (_, index) => index + 1);
   };
-
-  const handleChangeYear = (year: number) => {
-    setDate(prevDate => ({...prevDate, year}));
-  };
-
-  const handleChangeMonth = (month: number) => {
-    setDate(prevDate => ({...prevDate, month}));
-  };
-
-  const handleChangeDay = (day: number) => {
-    setDate(prevDate => ({...prevDate, day}));
-  };
-
-  useEffect(() => {
-    onChange(date);
-  }, [date]);
 
   return (
     <div css={{position: 'relative', height: '15rem'}}>
