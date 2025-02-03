@@ -32,7 +32,7 @@ export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolea
   css([
     {
       height: '1.125rem',
-      color: theme.colors.gray,
+      color: theme.colors.secondary,
     },
     !hasFocus &&
       !hasValue && {
@@ -60,7 +60,7 @@ export const inputBoxStyle = ({isFocus, theme, isError}: InputStyleProps) =>
       gap: '1rem',
       padding: '1rem 1.25rem',
       borderRadius: '0.625rem',
-      background: isFocus ? theme.gradients.secondaryContainer : theme.gradients.primaryContainer,
+      background: isFocus ? theme.gradients.primary : theme.gradients.primaryContainer,
       boxSizing: 'border-box',
     },
     getBorderStyle({isFocus, theme, isError}),
