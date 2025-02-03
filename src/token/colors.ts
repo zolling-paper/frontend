@@ -59,8 +59,8 @@ export type GradientTokens = Record<GradientKey, string>;
 export const SEMANTIC_COLORS: ColorTokens = {
   white: PRIMITIVE_COLORS.white,
   background: PRIMITIVE_COLORS.gray[50],
-  lightGray: PRIMITIVE_COLORS.gray[300],
-  gray: PRIMITIVE_COLORS.gray[500],
+  lightGray: PRIMITIVE_COLORS.gray[400],
+  gray: PRIMITIVE_COLORS.gray[600],
   black: PRIMITIVE_COLORS.gray[800],
 
   primary: PRIMITIVE_COLORS.pink[200],

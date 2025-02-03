@@ -8,6 +8,7 @@ import {VStack} from '@/components/Stack';
 import Top from '@/components/Top/Top';
 import {YMD} from '@/types/model';
 import {dateToYMD, YMDtoDateString} from '@/utils/date';
+import {Button} from '@/components/Button';
 
 interface ShowDateStepProps {
   formData: BoardFormData;
@@ -36,7 +37,11 @@ export default function ShowDateStep({formData, setFormData, onSubmit}: ShowDate
       <form onSubmit={handleSubmit} css={{width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem'}}>
         <Input labelText="날짜" value={YMDtoDateString(formData.showDate)} disabled />
         <DatePicker onChange={handleDateChange} initialDate={now} />
-        <FixedBottomCTA type="submit">다음</FixedBottomCTA>
+        <FixedBottomCTA>
+          <Button display="full" size="lg" type="submit">
+            다음
+          </Button>
+        </FixedBottomCTA>
       </form>
     </VStack>
   );

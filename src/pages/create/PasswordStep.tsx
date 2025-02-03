@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import {Button} from '@/components/Button';
 import {BoardFormData, Step} from './page';
 
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
@@ -102,8 +103,10 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
           inputMode="numeric"
           autoFocus={true}
         />
-        <FixedBottomCTA type="submit" disabled={!canSubmit}>
-          다음
+        <FixedBottomCTA>
+          <Button display="full" size="lg" type="submit" disabled={!canSubmit}>
+            다음
+          </Button>
         </FixedBottomCTA>
       </form>
     </VStack>
