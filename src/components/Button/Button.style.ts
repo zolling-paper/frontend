@@ -22,8 +22,6 @@ const getButtonDefaultStyle = (theme: Theme) =>
     transitionTimingFunction: 'cubic-bezier(0.7, 0.62, 0.62, 1.16)',
     whiteSpace: 'nowrap',
 
-    
-
     '&:focus-visible': {
       outline: `2px solid ${theme.colors.complete}`,
       outlineOffset: '1px',
@@ -82,11 +80,6 @@ const getButtonSizeStyle = (size: ButtonSize) => {
 
   return style[size];
 };
-
-/* 배경 그라데이션 */
-    background: 'linear-gradient(180deg, #FFDCFF 0%, #FF97FE 100%)',
-    /* 테두리 스타일 */
-    border: '2px solid #C782FF',
 
 const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
   const style = {
