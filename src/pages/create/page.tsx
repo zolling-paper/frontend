@@ -11,6 +11,8 @@ import {dateToYMD, YMDtoDate} from '@/utils/date';
 import {useRequestPostBoard} from '@/hooks/useRequestPostBoard';
 import {Button} from '@/components/Button';
 import {Text} from '@/components/Text';
+import {useNavigate} from 'react-router-dom';
+import ROUTE from '@/constants/route';
 
 export type Step = 'name' | 'password' | 'showDate';
 
@@ -28,6 +30,7 @@ export default function CreatePage() {
     password: '',
     showDate: dateToYMD(now),
   });
+  const navigate = useNavigate();
 
   const {mutate: postBoard, isSuccess, data} = useRequestPostBoard();
 
@@ -46,21 +49,41 @@ export default function CreatePage() {
   }, [isSuccess, data]);
 
   return (
-    <VStack p="1.5rem" gap="1rem">
+    <VStack p="6rem 0 0 0">
       <Header
         left={
-          <Button size="sm" variants="ghost">
-            <Text size="bodyBold" textColor="secondary">
-              홈으로
-            </Text>
-          </Button>
+          <>
+            {step === 'name' ? (
+              <Button size="sm" variants="ghost" onClick={() => navigate(ROUTE.main)}>
+                <Text size="bodyBold" textColor="secondary">
+                  {`<  이름 입력하기`}
+                </Text>
+              </Button>
+            ) : null}
+            {step === 'password' ? (
+              <Button size="sm" variants="ghost" onClick={() => setStep('name')}>
+                <Text size="bodyBold" textColor="secondary">
+                  {`<  비밀번호 입력하기`}
+                </Text>
+              </Button>
+            ) : null}
+            {step === 'showDate' ? (
+              <Button size="sm" variants="ghost" onClick={() => setStep('password')}>
+                <Text size="bodyBold" textColor="secondary">
+                  {`<  공개날짜 선택하기`}
+                </Text>
+              </Button>
+            ) : null}
+          </>
         }
       />
-      {step === 'name' ? <NameStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
-      {step === 'password' ? <PasswordStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
-      {step === 'showDate' ? (
-        <ShowDateStep formData={formData} setFormData={setFormData} onSubmit={handleSubmit} />
-      ) : null}
+      <VStack p="1.5rem" gap="1rem">
+        {step === 'name' ? <NameStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
+        {step === 'password' ? <PasswordStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
+        {step === 'showDate' ? (
+          <ShowDateStep formData={formData} setFormData={setFormData} onSubmit={handleSubmit} />
+        ) : null}
+      </VStack>
     </VStack>
   );
 }
