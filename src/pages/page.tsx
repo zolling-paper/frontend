@@ -2,11 +2,11 @@
 
 import {useNavigate} from 'react-router-dom';
 
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import ROUTE from '@/constants/route';
-import {VStack} from '@/components/Stack';
 import {Button} from '@/components/Button';
+import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@/components/Header/Header';
+import {VStack} from '@/components/Stack';
+import ROUTE from '@/constants/route';
 
 export default function MainPage() {
   const navigate = useNavigate();

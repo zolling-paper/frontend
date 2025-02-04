@@ -1,4 +1,5 @@
 import {css} from '@emotion/react';
+
 import {Theme} from './theme.type';
 import {SEMANTIC_COLORS} from '../token/colors';
 

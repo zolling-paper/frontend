@@ -3,6 +3,7 @@ import React from 'react';
 
 import {DesignProvider} from '../src/theme/DesignProvider';
 import {GlobalStyle} from '../src/theme/GlobalStyle';
+
 import type {Preview} from '@storybook/react';
 
 const preview: Preview = {

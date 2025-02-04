@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import {useTheme} from '@/theme/DesignProvider';
 import {fixedBottomCTAStyle} from './FixedBottomCTA.style';
 import {VStack} from '../Stack';
+
+import {useTheme} from '@/theme/DesignProvider';
 
 export const FixedBottomCTA = ({children}: {children: React.ReactNode}) => {
   const {theme} = useTheme();

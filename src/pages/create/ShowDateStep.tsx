@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import {DatePicker} from '@/components/DatePicker/DatePicker';
 import {BoardFormData} from './page';
 
+import {Button} from '@/components/Button';
+import {DatePicker} from '@/components/DatePicker/DatePicker';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@/components/Input';
 import {VStack} from '@/components/Stack';
 import Top from '@/components/Top/Top';
 import {YMD} from '@/types/model';
 import {dateToYMD, YMDtoDateString} from '@/utils/date';
-import {Button} from '@/components/Button';
 
 interface ShowDateStepProps {
   formData: BoardFormData;

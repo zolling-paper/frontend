@@ -1,7 +1,8 @@
-import {errorTextAnimationStyle, labelTextAnimationStyle} from './../animation/animation';
 import {css} from '@emotion/react';
 import {Theme} from '@theme/theme.type';
+
 import {commonTransition} from '../animation/animation';
+import {errorTextAnimationStyle, labelTextAnimationStyle} from './../animation/animation';
 
 export const inputLayoutStyle = css({
   display: 'flex',
