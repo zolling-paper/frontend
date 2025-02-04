@@ -9,6 +9,8 @@ import {VStack} from '@/components/Stack';
 import {YMD} from '@/types/model';
 import {dateToYMD, YMDtoDate} from '@/utils/date';
 import {useRequestPostBoard} from '@/hooks/useRequestPostBoard';
+import {Button} from '@/components/Button';
+import {Text} from '@/components/Text';
 
 export type Step = 'name' | 'password' | 'showDate';
 
@@ -45,7 +47,15 @@ export default function CreatePage() {
 
   return (
     <VStack p="1.5rem" gap="1rem">
-      <Header />
+      <Header
+        left={
+          <Button size="sm" variants="ghost">
+            <Text size="bodyBold" textColor="secondary">
+              홈으로
+            </Text>
+          </Button>
+        }
+      />
       {step === 'name' ? <NameStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
       {step === 'password' ? <PasswordStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
       {step === 'showDate' ? (

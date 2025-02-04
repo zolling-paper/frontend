@@ -23,9 +23,11 @@ interface InputStyleProps {
   isError?: boolean;
 }
 
-const getBorderStyle = ({theme, isError}: InputStyleProps) =>
+const getBorderStyle = ({theme, isError, isFocus}: InputStyleProps) =>
   css({
-    boxShadow: isError ? `0 0 0 2px ${theme.colors.primary} inset` : `0 0 0 2px ${theme.colors.secondary} inset`,
+    boxShadow: isError
+      ? `0 0 0 2px ${theme.colors.primary} inset`
+      : `0 0 0 2px ${isFocus ? theme.colors.secondary : theme.colors.secondaryContainer} inset`,
   });
 
 export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolean) =>
@@ -60,7 +62,7 @@ export const inputBoxStyle = ({isFocus, theme, isError}: InputStyleProps) =>
       gap: '1rem',
       padding: '1rem 1.25rem',
       borderRadius: '0.625rem',
-      background: isFocus ? theme.gradients.primary : theme.gradients.primaryContainer,
+      background: theme.gradients.primaryContainer,
       boxSizing: 'border-box',
     },
     getBorderStyle({isFocus, theme, isError}),
@@ -69,7 +71,7 @@ export const inputBoxStyle = ({isFocus, theme, isError}: InputStyleProps) =>
 
 export const inputBoxAnimationStyle = commonTransition;
 
-export const inputStyle = ({isFocus, theme}: InputStyleProps) =>
+export const inputStyle = ({theme}: InputStyleProps) =>
   css([
     {
       display: 'flex',
@@ -79,7 +81,7 @@ export const inputStyle = ({isFocus, theme}: InputStyleProps) =>
       fontWeight: '700',
 
       '&::placeholder': {
-        color: isFocus ? theme.colors.background : theme.colors.lightGray,
+        color: theme.colors.lightGray,
       },
     },
     // {...theme.typography.body},
