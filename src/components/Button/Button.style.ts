@@ -12,13 +12,13 @@ export const buttonContentStyle = css({
 
 export const buttonStyle = (props: Required<ButtonStyleProps>) => {
   return css([
-    getButtonDefaultStyle(props.display, props.theme),
+    getButtonDefaultStyle(props.display),
     getButtonSizeStyle(props.size),
     getButtonVariantsStyle(props.variants, props.theme),
   ]);
 };
 
-const getButtonDefaultStyle = (display: ButtonDisplay, theme: Theme) =>
+const getButtonDefaultStyle = (display: ButtonDisplay) =>
   css({
     display: display === 'full' ? 'flex' : 'block',
     width: display === 'full' ? '100%' : 'auto',
@@ -34,7 +34,8 @@ const getButtonDefaultStyle = (display: ButtonDisplay, theme: Theme) =>
     },
   });
 
-const getHoverAndActiveBackground = (color: string) =>
+// const getHoverAndActiveBackground = (color: string) =>
+const getHoverAndActiveBackground = () =>
   css({
     // ':not(:disabled)': {
     //   '&:hover': {

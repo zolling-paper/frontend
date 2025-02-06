@@ -1,4 +1,3 @@
-import {getEnvVariable} from '@/env';
 import {
   PostPaperRequest,
   PostPaperResponse,
@@ -8,6 +7,8 @@ import {
   GetPapersPageResponse,
 } from '@type/services';
 import {http} from '@utils/http';
+
+import {getEnvVariable} from '@/env';
 
 const API_BASE_URL = getEnvVariable('VITE_API_BASE_URL');
 

@@ -1,7 +1,7 @@
-import {useQuery} from '@tanstack/react-query';
 
 import {getPapersPage} from '@apis/paper';
 import QUERY_KEY from '@constants/queryKey';
+import {useQuery} from '@tanstack/react-query';
 
 interface Params {
   boardId: number;

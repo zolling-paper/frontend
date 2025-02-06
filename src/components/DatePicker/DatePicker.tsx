@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {useTheme} from '@theme/DesignProvider';
+
 import {useCallback, useState} from 'react';
 
 import {Box} from '../Box';
@@ -12,7 +12,6 @@ export const DatePicker = ({
   onChange,
   initialDate = {year: new Date().getFullYear(), month: 0, day: 0},
 }: DatePickerProps) => {
-  const {theme} = useTheme();
   const [date, setDate] = useState<PickerDate>(initialDate);
 
   const handleDateChange = useCallback(

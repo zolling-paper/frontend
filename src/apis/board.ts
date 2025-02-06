@@ -1,6 +1,7 @@
-import {getEnvVariable} from '@/env';
 import {GetBoardRequestParam, GetBoardResponse, PostBoardRequest, PostBoardResponse} from '@type/services';
 import {http} from '@utils/http';
+
+import {getEnvVariable} from '@/env';
 
 const API_BASE_URL = getEnvVariable('VITE_API_BASE_URL');
 

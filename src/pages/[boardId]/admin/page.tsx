@@ -1,4 +1,3 @@
-import {useNavigate, useParams} from 'react-router-dom';
 
 import {Button} from '@components/Button';
 import Header from '@components/Header/Header';
@@ -6,6 +5,7 @@ import {VStack} from '@components/Stack';
 import {Text} from '@components/Text';
 import Top from '@components/Top/Top';
 import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
+import {useNavigate, useParams} from 'react-router-dom';
 
 export default function AdminPage() {
   const navigate = useNavigate();

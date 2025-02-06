@@ -1,5 +1,4 @@
 import {css} from '@emotion/react';
-
 import {Theme} from '@theme/theme.type';
 
 interface TopNavStyleProps {

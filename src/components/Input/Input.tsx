@@ -12,7 +12,6 @@ import {
   labelLayoutStyle,
 } from './Input.style';
 import {InputProps} from './Input.type';
-import {IconXCircle} from '../Icons/Icons/IconXCircle';
 
 export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(function Input(
   {

@@ -1,7 +1,7 @@
-import {useMutation, useQueryClient} from '@tanstack/react-query';
 
 import {postBoard} from '@apis/board';
 import QUERY_KEY from '@constants/queryKey';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {PostBoardRequest} from '@type/services';
 
 export const useRequestPostBoard = () => {

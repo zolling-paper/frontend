@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import type {Meta, StoryObj} from '@storybook/react';
 
 import {SEMANTIC_COLORS} from '@token/colors';
 
@@ -15,6 +14,8 @@ import {IconSetting} from './Icons/IconSetting';
 import {IconTrash} from './Icons/IconTrash';
 import {IconX} from './Icons/IconX';
 import {IconXCircle} from './Icons/IconXCircle';
+
+import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta<
   typeof IconCheck | typeof IconChevron | typeof IconConfirmCircle | typeof IconEdit | typeof IconErrorCircle

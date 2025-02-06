@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react';
 import {MultiplePaper} from '@type/model';
+
 import {PaperThumbnail} from '../PaperThumbnail/PaperThumbnail';
 
 interface Params {

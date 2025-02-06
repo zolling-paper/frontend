@@ -1,10 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
 
-import NameStep from './NameStep';
-import PasswordStep from './PasswordStep';
-import ShowDateStep from './ShowDateStep';
 
 import {Button} from '@components/Button';
 import {Header} from '@components/Header/Header';
@@ -14,6 +9,12 @@ import ROUTE from '@constants/route';
 import {useRequestPostBoard} from '@hooks/useRequestPostBoard';
 import {YMD} from '@type/model';
 import {dateToYMD, YMDtoDate} from '@utils/date';
+import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+
+import NameStep from './NameStep';
+import PasswordStep from './PasswordStep';
+import ShowDateStep from './ShowDateStep';
 
 export type Step = 'name' | 'password' | 'showDate';
 

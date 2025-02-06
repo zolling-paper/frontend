@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
+import {useTheme} from '@theme/DesignProvider';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import {SvgProps} from './Icon.type';
 import {svgStyle, svgWrapperStyle} from './Svg.style';
-import {useTheme} from '@theme/DesignProvider';
 
 const Svg: React.FC<SvgProps> = ({children, color, size, width, height, direction, ...rest}) => {
   console.log('svg');

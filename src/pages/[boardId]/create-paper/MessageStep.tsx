@@ -5,11 +5,13 @@ import {VStack} from '@components/Stack';
 import {TextArea} from '@components/TextArea/TextArea';
 import Top from '@components/Top/Top';
 import SETTING from '@constants/setting';
-import {useRequestPostPaper} from '@hooks/useRequestPostPaper';
-import {PaperFormData} from './page';
 import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useRequestPostPaper} from '@hooks/useRequestPostPaper';
 import {useEffect} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+
+import {PaperFormData} from './page';
+
 
 interface MessageStepProps {
   formData: PaperFormData;
