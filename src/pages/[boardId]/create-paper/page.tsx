@@ -1,11 +1,13 @@
+import {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+
+import MessageStep from './MessageStep';
+import NameStep from './NameStep';
+
 import {Button} from '@/components/Button';
 import Header from '@/components/Header/Header';
 import {VStack} from '@/components/Stack';
 import {Text} from '@/components/Text';
-import {useEffect, useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
-import NameStep from './NameStep';
-import MessageStep from './MessageStep';
 import ROUTE from '@/constants/route';
 
 export interface PaperFormData {

@@ -1,10 +1,11 @@
+import {useNavigate, useParams} from 'react-router-dom';
+
 import {Button} from '@/components/Button';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@/components/Header/Header';
 import {VStack} from '@/components/Stack';
 import Top from '@/components/Top/Top';
 import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
-import {useNavigate, useParams} from 'react-router-dom';
 
 export default function BoardPage() {
   const navigate = useNavigate();

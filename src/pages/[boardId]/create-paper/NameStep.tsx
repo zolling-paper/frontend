@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import {useState} from 'react';
 
+import {PaperFormData, Step} from './page';
+
 import {Button} from '@/components/Button';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@/components/Input';
@@ -8,7 +10,6 @@ import {VStack} from '@/components/Stack';
 import Top from '@/components/Top/Top';
 import REGEXP from '@/constants/regexp';
 import SETTING from '@/constants/setting';
-import {PaperFormData, Step} from './page';
 
 interface NameStepProps {
   formData: PaperFormData;
