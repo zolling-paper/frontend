@@ -3,13 +3,13 @@ import {useState} from 'react';
 
 import {PaperFormData, Step} from './page';
 
-import {Button} from '@/components/Button';
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import {Input} from '@/components/Input';
-import {VStack} from '@/components/Stack';
-import Top from '@/components/Top/Top';
-import REGEXP from '@/constants/regexp';
-import SETTING from '@/constants/setting';
+import {Button} from '@components/Button';
+import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
+import {Input} from '@components/Input';
+import {VStack} from '@components/Stack';
+import Top from '@components/Top/Top';
+import REGEXP from '@constants/regexp';
+import SETTING from '@constants/setting';
 
 interface NameStepProps {
   formData: PaperFormData;
@@ -90,6 +90,10 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
     setFormData({...formData, name: replacedName});
   };
 
+  const handleDelete = () => {
+    setFormData({...formData, name: ''});
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStep('message');
@@ -111,6 +115,7 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
           hasError={hasError}
           maxLength={SETTING.nameMaxLength}
           autoFocus={true}
+          onDelete={handleDelete}
         />
         <FixedBottomCTA>
           <Button display="full" size="lg" type="submit" disabled={!canSubmit}>

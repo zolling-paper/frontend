@@ -6,7 +6,7 @@ import {Text} from '../Text';
 import {scrollContainerStyle, scrollerItemStyle, scrollerStyle} from './DatePicker.style';
 import {ScrollerProps} from './DatePicker.type';
 
-import {useTheme} from '@/theme/DesignProvider';
+import {useTheme} from '@theme/DesignProvider';
 
 export const Scroller = ({
   options,

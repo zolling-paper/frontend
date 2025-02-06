@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import {Icon} from '@components/Icon';
 import {Text} from '@components/Text';
 import {useTheme} from '@theme/DesignProvider';
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
@@ -13,6 +12,7 @@ import {
   labelLayoutStyle,
 } from './Input.style';
 import {InputProps} from './Input.type';
+import {IconXCircle} from '../Icons/Icons/IconXCircle';
 
 export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
@@ -48,6 +48,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     };
   }, []);
 
+  //TODO: (@Todari): Icon 문자열 파싱 문제 해결
   return (
     <div css={inputLayoutStyle}>
       {(labelText || errorText) && (
@@ -74,16 +75,16 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
           autoFocus={autoFocus}
           {...htmlProps}
         />
-        {onDelete && value && hasFocus && (
+        {/* {onDelete && value && hasFocus && (
           <button
             type="button"
             onClick={onDelete}
             onKeyDown={e => e.key === 'Enter' && onDelete()}
             aria-label="입력 내용 모두 지우기"
           >
-            <Icon iconType="inputDelete" />
+            <IconXCircle />
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

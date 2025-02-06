@@ -3,7 +3,7 @@ import {fixedBottomCTAStyle} from './FixedBottomCTA.style';
 import {HStack, VStack} from '../Stack';
 import {FixedBottomCTAProps} from './FixedBottomCTA.type';
 
-import {useTheme} from '@/theme/DesignProvider';
+import {useTheme} from '@theme/DesignProvider';
 
 export const FixedBottomCTA = ({children, direction = 'column'}: FixedBottomCTAProps) => {
   const {theme} = useTheme();

@@ -6,8 +6,8 @@ import {
   GetPaperResponse,
   GetPapersPageRequestParam,
   GetPapersPageResponse,
-} from '@/types/services';
-import {http} from '@/utils/http';
+} from '@type/services';
+import {http} from '@utils/http';
 
 const API_BASE_URL = getEnvVariable('VITE_API_BASE_URL');
 

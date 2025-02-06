@@ -1,12 +1,11 @@
 import {useNavigate, useParams} from 'react-router-dom';
 
-import {Button} from '@/components/Button';
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import Header from '@/components/Header/Header';
-import {VStack} from '@/components/Stack';
-import {Text} from '@/components/Text';
-import Top from '@/components/Top/Top';
-import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
+import {Button} from '@components/Button';
+import Header from '@components/Header/Header';
+import {VStack} from '@components/Stack';
+import {Text} from '@components/Text';
+import Top from '@components/Top/Top';
+import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
 
 export default function AdminPage() {
   const navigate = useNavigate();

@@ -3,13 +3,13 @@ import {useState} from 'react';
 
 import {BoardFormData, Step} from './page';
 
-import {Button} from '@/components/Button';
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import {Input} from '@/components/Input';
-import {VStack} from '@/components/Stack';
-import Top from '@/components/Top/Top';
-import REGEXP from '@/constants/regexp';
-import SETTING from '@/constants/setting';
+import {Button} from '@components/Button';
+import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
+import {Input} from '@components/Input';
+import {VStack} from '@components/Stack';
+import Top from '@components/Top/Top';
+import REGEXP from '@constants/regexp';
+import SETTING from '@constants/setting';
 
 interface PasswordStepProps {
   formData: BoardFormData;
@@ -80,6 +80,10 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
     setFormData({...formData, password: replacedPassword});
   };
 
+  const handleDelete = () => {
+    setFormData({...formData, password: ''});
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStep('showDate');
@@ -103,6 +107,7 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
           type="password"
           inputMode="numeric"
           autoFocus={true}
+          onDelete={handleDelete}
         />
         <FixedBottomCTA direction="row">
           <Button variants="secondary" display="full" size="lg" onClick={() => setStep('name')}>

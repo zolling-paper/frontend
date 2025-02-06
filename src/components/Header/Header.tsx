@@ -8,8 +8,8 @@ import {Container} from '../Container';
 import {HStack, VStack} from '../Stack';
 import {Text} from '../Text';
 
-import ROUTE from '@/constants/route';
-import {useTheme} from '@/theme/DesignProvider';
+import ROUTE from '@constants/route';
+import {useTheme} from '@theme/DesignProvider';
 
 interface Props {
   left?: React.ReactNode;

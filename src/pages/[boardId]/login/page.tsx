@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import {useState} from 'react';
 
-import {Button} from '@/components/Button';
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import {Input} from '@/components/Input';
-import {VStack} from '@/components/Stack';
-import Top from '@/components/Top/Top';
-import REGEXP from '@/constants/regexp';
-import SETTING from '@/constants/setting';
-import Header from '@/components/Header/Header';
-import {Text} from '@/components/Text';
+import {Button} from '@components/Button';
+import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
+import {Input} from '@components/Input';
+import {VStack} from '@components/Stack';
+import Top from '@components/Top/Top';
+import REGEXP from '@constants/regexp';
+import SETTING from '@constants/setting';
+import Header from '@components/Header/Header';
+import {Text} from '@components/Text';
 import {useNavigate, useParams} from 'react-router-dom';
 
 type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER';
@@ -79,6 +79,10 @@ export default function LoginPage() {
     setPassword(replacedPassword);
   };
 
+  const handleDelete = () => {
+    setPassword('');
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate(`/${boardId}/admin`);
@@ -112,6 +116,7 @@ export default function LoginPage() {
             type="password"
             inputMode="numeric"
             autoFocus={true}
+            onDelete={handleDelete}
           />
           <FixedBottomCTA direction="row">
             <Button display="full" size="lg" type="submit" disabled={!canSubmit}>
