@@ -1,18 +1,15 @@
 /** @jsxImportSource @emotion/react */
-import {useEffect} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
-
-import {PaperFormData} from './page';
-
 import {Button} from '@/components/Button';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {VStack} from '@/components/Stack';
 import {TextArea} from '@/components/TextArea/TextArea';
 import Top from '@/components/Top/Top';
 import SETTING from '@/constants/setting';
-import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
 import {useRequestPostPaper} from '@/hooks/useRequestPostPaper';
-
+import {PaperFormData} from './page';
+import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
+import {useNavigate, useParams} from 'react-router-dom';
+import {useEffect} from 'react';
 
 interface MessageStepProps {
   formData: PaperFormData;
@@ -57,6 +54,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
           onChange={handleChangeMessage}
           rows={SETTING.textAreaRows}
           maxLength={SETTING.textAreaMaxLength}
+          autoFocus={true}
         />
         <FixedBottomCTA direction="row">
           <Button variants="secondary" display="full" size="lg" onClick={() => setStep('name')}>

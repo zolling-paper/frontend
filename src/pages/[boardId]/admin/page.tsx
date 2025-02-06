@@ -8,7 +8,7 @@ import {Text} from '@/components/Text';
 import Top from '@/components/Top/Top';
 import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
 
-export default function PapersPage() {
+export default function AdminPage() {
   const navigate = useNavigate();
   const {boardId} = useParams();
   const {name} = useRequestGetBoard(Number(boardId));
@@ -29,11 +29,6 @@ export default function PapersPage() {
           <Top.Line text={`${name}님의 보드`} emphasize={[`${name}`]} />
         </Top>
       </VStack>
-      <FixedBottomCTA>
-        <Button display="full" size="lg" onClick={() => navigate(`/${boardId}/create-paper`)}>
-          메세지 남기기
-        </Button>
-      </FixedBottomCTA>
     </VStack>
   );
 }

@@ -98,7 +98,7 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
   return (
     <VStack gap="1rem">
       <Top>
-        <Top.Line text="받는 사람에게 보일" />
+        <Top.Line text="메세지에 보일" />
         <Top.Line text="나의 이름을 입력하세요" emphasize={['나의 이름']} />
       </Top>
       <form onSubmit={handleSubmit} css={{width: '100%'}}>

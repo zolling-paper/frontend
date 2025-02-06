@@ -5,9 +5,11 @@ import {createBrowserRouter} from 'react-router-dom';
 import App from './App';
 import CreatePaperPage from './pages/[boardId]/create-paper/page';
 import BoardPage from './pages/[boardId]/page';
-import PapersPage from './pages/[boardId]/papers/page';
+
 import CreateBoardPage from './pages/create-board/page';
 import MainPage from './pages/page';
+import LoginPage from './pages/[boardId]/login/page';
+import AdminPage from './pages/[boardId]/\badmin/page';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +38,12 @@ const router = createBrowserRouter([
         element: <CreatePaperPage />,
       },
       {
-        path: ROUTE.papers,
-        element: <PapersPage />,
+        path: ROUTE.login,
+        element: <LoginPage />,
+      },
+      {
+        path: ROUTE.admin,
+        element: <AdminPage />,
       },
     ],
   },
