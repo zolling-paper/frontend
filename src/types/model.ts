@@ -16,3 +16,10 @@ export type YMD = {
   month: number;
   day: number;
 };
+
+export type MultiplePaper = {
+  paperId: number;
+  createdAt: Date;
+  name: string;
+  content: string;
+};

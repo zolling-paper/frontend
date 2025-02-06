@@ -1,3 +1,5 @@
+import {MultiplePaper} from './model';
+
 export type PostBoardRequest = {
   name: string;
   password: string;
@@ -43,4 +45,16 @@ export type GetPaperResponse = {
   createdAt: Date;
   name: string;
   content: string;
+};
+
+export type GetPapersPageRequestParam = {
+  boardId: number;
+  cursor: number;
+  limit: number;
+};
+
+export type GetPapersPageResponse = {
+  responses: MultiplePaper[];
+  hasNext: boolean;
+  nextCursor: number;
 };
