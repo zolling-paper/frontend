@@ -7,9 +7,12 @@ import {svgStyle, svgWrapperStyle} from './Svg.style';
 import {useTheme} from '@theme/DesignProvider';
 
 const Svg: React.FC<SvgProps> = ({children, color, size, width, height, direction, ...rest}) => {
+  console.log('svg');
   const {theme} = useTheme();
 
+  console.log('svg2', children);
   const xmlString = ReactDOMServer.renderToStaticMarkup(children);
+  console.log('svg3', xmlString);
 
   const widthMatch = xmlString.match(/width="([^"]+)"/);
   const originWidth = widthMatch ? parseInt(widthMatch[1]) : 24;

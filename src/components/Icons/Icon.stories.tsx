@@ -8,7 +8,6 @@ import {IconChevron} from './Icons/IconChevron';
 import {IconConfirmCircle} from './Icons/IconConfirmCircle';
 import {IconEdit} from './Icons/IconEdit';
 import {IconErrorCircle} from './Icons/IconErrorCircle';
-import {IconKakao} from './Icons/IconKakao';
 import {IconMeatballs} from './Icons/IconMeatballs';
 import {IconPictureSquare} from './Icons/IconPictureSquare';
 import {IconSearch} from './Icons/IconSearch';
@@ -100,10 +99,6 @@ export const Error: Story = {
   render: (args: React.ComponentProps<typeof IconErrorCircle>) => (
     <IconShowcase IconComponent={IconErrorCircle} args={args} />
   ),
-};
-
-export const Kakao: Story = {
-  render: (args: React.ComponentProps<typeof IconKakao>) => <IconShowcase IconComponent={IconKakao} args={args} />,
 };
 
 export const Meatballs: Story = {

@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import {useTheme} from '@components/Design/theme/HDesignProvider';
 import IconSearchSvg from '@assets/svg/search.svg';
 
 import {SvgProps} from '../Icon.type';
