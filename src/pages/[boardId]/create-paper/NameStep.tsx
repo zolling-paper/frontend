@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import {useState} from 'react';
 
-import {BoardFormData, Step} from './page';
-
 import {Button} from '@/components/Button';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@/components/Input';
@@ -10,11 +8,11 @@ import {VStack} from '@/components/Stack';
 import Top from '@/components/Top/Top';
 import REGEXP from '@/constants/regexp';
 import SETTING from '@/constants/setting';
-
+import {PaperFormData, Step} from './page';
 
 interface NameStepProps {
-  formData: BoardFormData;
-  setFormData: (data: BoardFormData) => void;
+  formData: PaperFormData;
+  setFormData: (data: PaperFormData) => void;
   setStep: (step: Step) => void;
 }
 
@@ -93,13 +91,13 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStep('password');
+    setStep('message');
   };
 
   return (
     <VStack gap="1rem">
       <Top>
-        <Top.Line text="다른 사람에게 보일" />
+        <Top.Line text="받는 사람에게 보일" />
         <Top.Line text="나의 이름을 입력하세요" emphasize={['나의 이름']} />
       </Top>
       <form onSubmit={handleSubmit} css={{width: '100%'}}>

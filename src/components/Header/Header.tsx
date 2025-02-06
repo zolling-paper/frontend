@@ -8,7 +8,6 @@ import {Container} from '../Container';
 import {HStack, VStack} from '../Stack';
 import {Text} from '../Text';
 
-
 import ROUTE from '@/constants/route';
 import {useTheme} from '@/theme/DesignProvider';
 

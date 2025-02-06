@@ -15,11 +15,8 @@ export default function MainPage() {
     <VStack p="6rem 0 0 0">
       <Header />
       <FixedBottomCTA>
-        <Button display="full" size="lg" onClick={() => navigate(ROUTE.create)}>
+        <Button display="full" size="lg" onClick={() => navigate(ROUTE.createBoard)}>
           보드 생성하기
-        </Button>
-        <Button display="full" size="lg" onClick={() => {}}>
-          보드 조회하기
         </Button>
       </FixedBottomCTA>
     </VStack>

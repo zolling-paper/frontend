@@ -11,7 +11,6 @@ import Top from '@/components/Top/Top';
 import REGEXP from '@/constants/regexp';
 import SETTING from '@/constants/setting';
 
-
 interface PasswordStepProps {
   formData: BoardFormData;
   setFormData: (data: BoardFormData) => void;
@@ -105,7 +104,10 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
           inputMode="numeric"
           autoFocus={true}
         />
-        <FixedBottomCTA>
+        <FixedBottomCTA direction="row">
+          <Button variants="secondary" display="full" size="lg" onClick={() => setStep('name')}>
+            이전
+          </Button>
           <Button display="full" size="lg" type="submit" disabled={!canSubmit}>
             다음
           </Button>

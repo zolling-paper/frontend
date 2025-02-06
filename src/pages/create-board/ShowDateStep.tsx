@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {BoardFormData} from './page';
+import {BoardFormData, Step} from './page';
 
 import {Button} from '@/components/Button';
 import {DatePicker} from '@/components/DatePicker/DatePicker';
@@ -14,9 +14,10 @@ interface ShowDateStepProps {
   formData: BoardFormData;
   setFormData: (data: BoardFormData) => void;
   onSubmit: () => void;
+  setStep: (step: Step) => void;
 }
 
-export default function ShowDateStep({formData, setFormData, onSubmit}: ShowDateStepProps) {
+export default function ShowDateStep({formData, setFormData, onSubmit, setStep}: ShowDateStepProps) {
   const now = dateToYMD(new Date());
 
   const handleDateChange = (date: YMD) => {
@@ -37,7 +38,10 @@ export default function ShowDateStep({formData, setFormData, onSubmit}: ShowDate
       <form onSubmit={handleSubmit} css={{width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem'}}>
         <Input labelText="날짜" value={YMDtoDateString(formData.showDate)} disabled />
         <DatePicker onChange={handleDateChange} initialDate={now} />
-        <FixedBottomCTA>
+        <FixedBottomCTA direction="row">
+          <Button variants="secondary" display="full" size="lg" onClick={() => setStep('password')}>
+            다음
+          </Button>
           <Button display="full" size="lg" type="submit">
             다음
           </Button>
