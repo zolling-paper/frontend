@@ -45,7 +45,7 @@ export default function CreateBoardPage() {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log('Mutation result:', data);
+      navigate(`/${data.id}`);
     }
   }, [isSuccess, data]);
 

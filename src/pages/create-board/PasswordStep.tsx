@@ -37,13 +37,13 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
   const validatePasswordLength = (password: string) => {
     if (password.length < SETTING.passwordLength && password.length !== 0) {
       setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', true);
-        return prev;
+        const newMap = new Map<PasswordErrorType, boolean>([...prev, ['NOT_ENOUGH_LENGTH', true]]);
+        return newMap;
       });
     } else {
       setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', false);
-        return prev;
+        const newMap = new Map<PasswordErrorType, boolean>([...prev, ['NOT_ENOUGH_LENGTH', false]]);
+        return newMap;
       });
     }
   };
@@ -51,13 +51,13 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
   const validatePasswordType = (password: string) => {
     if (!REGEXP.password.test(password)) {
       setError(prev => {
-        prev.set('INVALID_CHARACTER', true);
-        return prev;
+        const newMap = new Map<PasswordErrorType, boolean>([...prev, ['INVALID_CHARACTER', true]]);
+        return newMap;
       });
     } else {
       setError(prev => {
-        prev.set('INVALID_CHARACTER', false);
-        return prev;
+        const newMap = new Map<PasswordErrorType, boolean>([...prev, ['INVALID_CHARACTER', false]]);
+        return newMap;
       });
     }
   };

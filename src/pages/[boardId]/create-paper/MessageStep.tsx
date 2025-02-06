@@ -28,7 +28,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
     setFormData({...formData, content: e.target.value});
   };
 
-  const canSubmit = formData.content.length !== 0;
+  const canSubmit = formData.content.trim().length !== 0;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
