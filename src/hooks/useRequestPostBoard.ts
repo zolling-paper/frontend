@@ -10,7 +10,7 @@ export const useRequestPostBoard = () => {
   const {mutate, ...rest} = useMutation({
     mutationFn: (data: PostBoardRequest) => postBoard(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: [QUERY_KEY.board]});
+      queryClient.invalidateQueries({queryKey: [QUERY_KEY.board, QUERY_KEY.papersPage]});
     },
   });
 
