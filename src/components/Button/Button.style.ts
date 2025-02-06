@@ -3,6 +3,8 @@ import {Theme} from '@theme/theme.type';
 
 import {ButtonStyleProps, ButtonSize, ButtonVariants, ButtonDisplay} from './Button.type';
 
+import {setDarker, setLighter} from '@/utils/colors';
+
 export const buttonContentStyle = css({
   display: 'flex',
   width: '100%',
@@ -12,7 +14,7 @@ export const buttonContentStyle = css({
 
 export const buttonStyle = (props: Required<ButtonStyleProps>) => {
   return css([
-    getButtonDefaultStyle(props.display),
+    getButtonDefaultStyle(props.display, props.theme),
     getButtonSizeStyle(props.size),
     getButtonVariantsStyle(props.variants, props.theme),
   ]);
@@ -34,17 +36,16 @@ const getButtonDefaultStyle = (display: ButtonDisplay) =>
     },
   });
 
-// const getHoverAndActiveBackground = (color: string) =>
-const getHoverAndActiveBackground = () =>
+const getHoverAndActiveBackground = (color: string) =>
   css({
-    // ':not(:disabled)': {
-    //   '&:hover': {
-    //     background: setLighter(color, 0.15),
-    //   },
-    //   '&:active': {
-    //     background: setDarker(color, 0.15),
-    //   },
-    // },
+    ':not(:disabled)': {
+      '&:hover': {
+        background: setLighter(color, 0.15),
+      },
+      '&:active': {
+        background: setDarker(color, 0.15),
+      },
+    },
   });
 
 const getButtonSizeStyle = (size: ButtonSize) => {
