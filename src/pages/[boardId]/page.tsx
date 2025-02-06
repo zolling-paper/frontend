@@ -1,4 +1,3 @@
-
 import {Button} from '@components/Button';
 import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@components/Header/Header';
@@ -9,7 +8,7 @@ import Top from '@components/Top/Top';
 import SETTING from '@constants/setting';
 import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
 import {useRequestGetPapersPage} from '@hooks/useRequestGetPapersPage';
-import {useRef, useState} from 'react';
+import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
 export default function BoardPage() {
