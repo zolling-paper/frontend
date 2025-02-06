@@ -23,7 +23,7 @@ export interface BoardFormData {
   showDate: YMD;
 }
 
-export default function CreatePage() {
+export default function CreateBoardPage() {
   const now = new Date();
   const [step, setStep] = useState<Step>('name');
   const [formData, setFormData] = useState<BoardFormData>({
@@ -45,7 +45,7 @@ export default function CreatePage() {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log('Mutation result:', data);
+      navigate(`/${data.id}`);
     }
   }, [isSuccess, data]);
 
@@ -53,37 +53,19 @@ export default function CreatePage() {
     <VStack p="6rem 0 0 0">
       <Header
         left={
-          <>
-            {step === 'name' ? (
-              <Button size="sm" variants="ghost" onClick={() => navigate(ROUTE.main)}>
-                <Text size="bodyBold" textColor="secondary">
-                  {`<  이름 입력하기`}
-                </Text>
-              </Button>
-            ) : null}
-            {step === 'password' ? (
-              <Button size="sm" variants="ghost" onClick={() => setStep('name')}>
-                <Text size="bodyBold" textColor="secondary">
-                  {`<  비밀번호 입력하기`}
-                </Text>
-              </Button>
-            ) : null}
-            {step === 'showDate' ? (
-              <Button size="sm" variants="ghost" onClick={() => setStep('password')}>
-                <Text size="bodyBold" textColor="secondary">
-                  {`<  공개날짜 선택하기`}
-                </Text>
-              </Button>
-            ) : null}
-          </>
+          <Button size="sm" variants="ghost" onClick={() => navigate(ROUTE.main)}>
+            <Text size="bodyBold" textColor="secondary">
+              {`<  보드 생성하기`}
+            </Text>
+          </Button>
         }
       />
       <VStack p="1.5rem" gap="1rem">
-        {step === 'name' ? <NameStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
-        {step === 'password' ? <PasswordStep formData={formData} setFormData={setFormData} setStep={setStep} /> : null}
-        {step === 'showDate' ? (
-          <ShowDateStep formData={formData} setFormData={setFormData} onSubmit={handleSubmit} />
-        ) : null}
+        {step === 'name' && <NameStep formData={formData} setFormData={setFormData} setStep={setStep} />}
+        {step === 'password' && <PasswordStep formData={formData} setFormData={setFormData} setStep={setStep} />}
+        {step === 'showDate' && (
+          <ShowDateStep formData={formData} setFormData={setFormData} onSubmit={handleSubmit} setStep={setStep} />
+        )}
       </VStack>
     </VStack>
   );
