@@ -57,7 +57,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
           autoFocus={true}
         />
         <FixedBottomCTA direction="row">
-          <Button variants="secondary" display="full" size="lg" onClick={() => setStep('name')}>
+          <Button variants="secondary" display="full" size="lg" type="button" onClick={() => setStep('name')}>
             이전
           </Button>
           <Button display="full" size="lg" type="submit" disabled={!canSubmit}>

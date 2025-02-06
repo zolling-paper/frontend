@@ -110,7 +110,7 @@ export default function PasswordStep({formData, setFormData, setStep}: PasswordS
           onDelete={handleDelete}
         />
         <FixedBottomCTA direction="row">
-          <Button variants="secondary" display="full" size="lg" onClick={() => setStep('name')}>
+          <Button variants="secondary" display="full" size="lg" type="button" onClick={() => setStep('name')}>
             이전
           </Button>
           <Button display="full" size="lg" type="submit" disabled={!canSubmit}>

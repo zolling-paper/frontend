@@ -38,22 +38,28 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
 
   const validateNameLength = (name: string) => {
     if (name.length < SETTING.nameMinLength && name.length !== 0) {
-      setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', true);
-        prev.set('EXCEED_LENGTH', false);
-        return prev;
+      setError(() => {
+        const newMap = new Map<NameErrorType, boolean>([
+          ['NOT_ENOUGH_LENGTH', true],
+          ['EXCEED_LENGTH', false],
+        ]);
+        return newMap;
       });
     } else if (name.length > SETTING.nameMaxLength) {
-      setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', false);
-        prev.set('EXCEED_LENGTH', true);
-        return prev;
+      setError(() => {
+        const newMap = new Map<NameErrorType, boolean>([
+          ['NOT_ENOUGH_LENGTH', false],
+          ['EXCEED_LENGTH', true],
+        ]);
+        return newMap;
       });
     } else {
-      setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', false);
-        prev.set('EXCEED_LENGTH', false);
-        return prev;
+      setError(() => {
+        const newMap = new Map<NameErrorType, boolean>([
+          ['NOT_ENOUGH_LENGTH', false],
+          ['EXCEED_LENGTH', false],
+        ]);
+        return newMap;
       });
     }
   };
@@ -61,13 +67,13 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
   const validateNameType = (name: string) => {
     if (!REGEXP.name.test(name)) {
       setError(prev => {
-        prev.set('INVALID_CHARACTER', true);
-        return prev;
+        const newMap = new Map<NameErrorType, boolean>([...prev, ['INVALID_CHARACTER', true]]);
+        return newMap;
       });
     } else {
       setError(prev => {
-        prev.set('INVALID_CHARACTER', false);
-        return prev;
+        const newMap = new Map<NameErrorType, boolean>([...prev, ['INVALID_CHARACTER', false]]);
+        return newMap;
       });
     }
   };
