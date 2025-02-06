@@ -1,13 +1,16 @@
 /** @jsxImportSource @emotion/react */
+import {useState} from 'react';
+
 import {BoardFormData, Step} from './page';
 
+import {Button} from '@/components/Button';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@/components/Input';
 import {VStack} from '@/components/Stack';
 import Top from '@/components/Top/Top';
 import REGEXP from '@/constants/regexp';
 import SETTING from '@/constants/setting';
-import {useState} from 'react';
+
 
 interface NameStepProps {
   formData: BoardFormData;
@@ -110,8 +113,10 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
           maxLength={SETTING.nameMaxLength}
           autoFocus={true}
         />
-        <FixedBottomCTA type="submit" disabled={!canSubmit}>
-          다음
+        <FixedBottomCTA>
+          <Button display="full" size="lg" type="submit" disabled={!canSubmit}>
+            다음
+          </Button>
         </FixedBottomCTA>
       </form>
     </VStack>

@@ -1,7 +1,8 @@
-import {errorTextAnimationStyle, labelTextAnimationStyle} from './../animation/animation';
 import {css} from '@emotion/react';
 import {Theme} from '@theme/theme.type';
+
 import {commonTransition} from '../animation/animation';
+import {errorTextAnimationStyle, labelTextAnimationStyle} from './../animation/animation';
 
 export const inputLayoutStyle = css({
   display: 'flex',
@@ -23,14 +24,18 @@ interface InputStyleProps {
   isError?: boolean;
 }
 
-const getBorderStyle = ({isFocus, theme, isError}: InputStyleProps) =>
-  isError ? `0 0 0 1px ${theme.colors.error} inset` : isFocus ? `0 0 0 1px ${theme.colors.primary} inset` : 'none';
+const getBorderStyle = ({theme, isError, isFocus}: InputStyleProps) =>
+  css({
+    boxShadow: isError
+      ? `0 0 0 2px ${theme.colors.primary} inset`
+      : `0 0 0 2px ${isFocus ? theme.colors.secondary : theme.colors.secondaryContainer} inset`,
+  });
 
 export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolean) =>
   css([
     {
       height: '1.125rem',
-      color: theme.colors.gray,
+      color: theme.colors.secondary,
     },
     !hasFocus &&
       !hasValue && {
@@ -45,23 +50,23 @@ export const errorTextStyle = ({theme, isError}: InputStyleProps) =>
   css([
     {
       height: '1.125rem',
-      color: theme.colors.onErrorContainer,
+      color: theme.colors.primary,
     },
     errorTextAnimationStyle(isError ?? false),
   ]);
 
-export const inputBoxStyle = ({theme, isFocus, isError}: InputStyleProps) =>
+export const inputBoxStyle = ({isFocus, theme, isError}: InputStyleProps) =>
   css([
     {
       display: 'flex',
       justifyContent: 'space-between',
       gap: '1rem',
-      padding: '0.75rem 1rem',
-      borderRadius: '1rem',
-      backgroundColor: theme.colors.lightGrayContainer,
+      padding: '1rem 1.25rem',
+      borderRadius: '0.625rem',
+      background: theme.gradients.primaryContainer,
       boxSizing: 'border-box',
-      boxShadow: getBorderStyle({isFocus, theme, isError}),
     },
+    getBorderStyle({isFocus, theme, isError}),
     inputBoxAnimationStyle,
   ]);
 
@@ -72,11 +77,13 @@ export const inputStyle = ({theme}: InputStyleProps) =>
     {
       display: 'flex',
       width: '100%',
-      color: theme.colors.black,
+      color: theme.colors.secondary,
+      fontSize: '1.25rem',
+      fontWeight: '700',
 
-      '&:placeholder': {
-        color: theme.colors.gray,
+      '&::placeholder': {
+        color: theme.colors.lightGray,
       },
     },
-    {...theme.typography.body},
+    // {...theme.typography.body},
   ]);

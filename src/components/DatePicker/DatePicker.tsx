@@ -89,7 +89,7 @@ export const DatePicker = ({
           perspective="right"
         />
         <Box
-          bg={theme.colors.grayContainer}
+          // bg={theme.colors.grayContainer}
           center
           w="calc(100% - 2rem)"
           br="1rem"
@@ -97,9 +97,11 @@ export const DatePicker = ({
           z={-10}
           css={datePickerAlignStyle}
         />
-        <Box bg={theme.colors.white} center w="100%" h="100%" z={-20} css={datePickerAlignStyle} />
+        <Box w="100%" h="100%" z={-20} css={datePickerAlignStyle} />
         <Box w="100%" h="100%" z={10} css={backgroundStyle} />
       </HStack>
     </div>
   );
 };
+
+export default DatePicker;

@@ -11,13 +11,13 @@ export const datePickerAlignStyle = css`
 `;
 
 export const backgroundStyle = css`
-  background: linear-gradient(
+  /* background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 1) 0%,
     rgba(255, 255, 255, 0) 25%,
     rgba(255, 255, 255, 0) 75%,
     rgba(255, 255, 255, 1) 100%
-  );
+  ); */
   ${datePickerAlignStyle}
 `;
 

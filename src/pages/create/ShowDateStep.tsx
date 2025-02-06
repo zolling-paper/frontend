@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import {DatePicker} from '@/components/DatePicker/DatePicker';
 import {BoardFormData} from './page';
 
+import {Button} from '@/components/Button';
+import {DatePicker} from '@/components/DatePicker/DatePicker';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@/components/Input';
 import {VStack} from '@/components/Stack';
@@ -36,7 +37,11 @@ export default function ShowDateStep({formData, setFormData, onSubmit}: ShowDate
       <form onSubmit={handleSubmit} css={{width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem'}}>
         <Input labelText="날짜" value={YMDtoDateString(formData.showDate)} disabled />
         <DatePicker onChange={handleDateChange} initialDate={now} />
-        <FixedBottomCTA type="submit">다음</FixedBottomCTA>
+        <FixedBottomCTA>
+          <Button display="full" size="lg" type="submit">
+            다음
+          </Button>
+        </FixedBottomCTA>
       </form>
     </VStack>
   );

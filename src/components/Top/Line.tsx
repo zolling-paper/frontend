@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { HStack } from '../Stack';
+import {HStack} from '../Stack';
 import {Text} from '../Text/Text';
 
 interface Props {
@@ -24,7 +24,7 @@ export default function Line({text, emphasize = []}: Props) {
           <Text
             key={`${text}-${index}`}
             size="subTitle"
-            textColor={emphasize.includes(text) ? 'black' : 'gray'}
+            textColor={emphasize.includes(text) ? 'secondary' : 'gray'}
             style={{whiteSpace: 'pre'}}
             aria-hidden={true}
           >

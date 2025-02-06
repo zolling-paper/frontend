@@ -1,7 +1,7 @@
-// type Unit = null | 'px' | '%' | 'em' | 'rem' | 'vh' | 'vw';
+type Unit = null | 'px' | '%' | 'em' | 'rem' | 'vh' | 'vw';
 
-const checkStringUnit = (value?: string) => {
-  if (!value) return '';
+const checkStringUnit = (value?: string): Unit => {
+  if (!value) return null;
   if (value.includes('%')) return '%';
   if (value.includes('rem')) return 'rem';
   if (value.includes('em')) return 'em';
@@ -11,34 +11,77 @@ const checkStringUnit = (value?: string) => {
   return null;
 };
 
-export const stringValueWithUnit = (value?: string | number) => {
-  if (!value) return '';
-  const stringValue = typeof value === 'number' ? `${value}px` : value;
+const isComplexValue = (value: string) => {
+  return value.includes('${') || value.includes(' ') || value.includes('calc') || value.includes('var');
+};
+
+export const stringValueWithUnit = (value?: string | number | null | undefined) => {
+  if (value === null || value === undefined) return '';
+  const stringValue = typeof value === 'number' ? `${value}px` : String(value);
+
+  // 복잡한 값(템플릿 리터럴, CSS 함수, CSS 변수 등)은 그대로 반환
+  if (typeof value === 'string' && isComplexValue(value)) {
+    return value;
+  }
+
   const unit = checkStringUnit(stringValue);
-  return `${stringValue}${unit === null ? (Number.isNaN(Number(stringValue)) ? unit : 'px') : ''}`;
+  if (unit) return stringValue;
+  return Number.isNaN(Number(stringValue)) ? stringValue : `${stringValue}px`;
 };
 
-export const stringAndNumberValue = (value?: string | number) => {
-  if (!value) return '';
-  return typeof value === 'number' ? `${value}` : value;
+export const stringAndNumberValue = (value?: string | number | null | undefined) => {
+  if (value === null || value === undefined) return '';
+  return String(value);
 };
 
-export const stringValueWithSpacing = (value?: string | number) => {
-  if (!value) return '';
-  return stringAndNumberValue(value).split(' ').map(stringValueWithUnit).join(' ');
+export const stringValueWithSpacing = (value?: string | number | null | undefined) => {
+  if (value === null || value === undefined) return '';
+  const stringValue = stringAndNumberValue(value);
+
+  // 복잡한 값은 그대로 반환
+  if (typeof value === 'string' && isComplexValue(stringValue)) {
+    return stringValue;
+  }
+
+  return stringValue
+    .split(' ')
+    .map(v => v.trim())
+    .filter(Boolean)
+    .map(stringValueWithUnit)
+    .join(' ');
 };
 
 type AttributeKey = 'maxW' | 'w' | 'h' | 'z' | 'p' | 'm' | 'br' | 'b' | 'gap';
+type AttributeValue = string | number | null | undefined;
 
-export const attributeWithUnit = (attributes: Partial<Record<AttributeKey, string | number | undefined>>) => {
-  if (!attributes) return '';
+export const attributeWithUnit = (attributes: Partial<Record<AttributeKey, AttributeValue>>) => {
+  if (!attributes) return [];
+
   return Object.entries(attributes).map(([key, value]) => {
-    if (key === 'p' || key === 'm') {
-      return stringValueWithSpacing(value);
+    if (value === null || value === undefined) return '';
+
+    // 복잡한 값은 그대로 반환
+    if (typeof value === 'string' && isComplexValue(value)) {
+      return value;
     }
-    if (key === 'z') {
-      return stringAndNumberValue(value);
+
+    switch (key) {
+      case 'p':
+      case 'm':
+      case 'b':
+        return stringValueWithSpacing(value);
+      case 'z':
+        return stringAndNumberValue(value);
+      default:
+        return stringValueWithUnit(value);
     }
-    return stringValueWithUnit(value);
   });
+};
+
+export const borderValue = (value?: string | number | null | undefined) => {
+  if (value === null || value === undefined) return '';
+  if (typeof value === 'string' && isComplexValue(value)) {
+    return value;
+  }
+  return stringValueWithUnit(value);
 };
