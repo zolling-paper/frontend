@@ -12,7 +12,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 
 import {PaperFormData} from './page';
 
-
 interface MessageStepProps {
   formData: PaperFormData;
   setFormData: (data: PaperFormData) => void;
@@ -23,7 +22,15 @@ export type Step = 'name' | 'message';
 
 export default function MessageStep({formData, setFormData, setStep}: MessageStepProps) {
   const {boardId} = useParams();
-  const {name} = useRequestGetBoard(Number(boardId));
+  const {name} = useRequestGetBoard(boardId ?? '');
+
+  // @TODO: @Todari 에러 페이지 및 리다이렉션 로직 분리
+  useEffect(() => {
+    if (!boardId) {
+      navigate('/');
+    }
+  }, [boardId]);
+
   const {mutate: postPaper, isSuccess} = useRequestPostPaper();
   const navigate = useNavigate();
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,7 +41,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postPaper({boardId: Number(boardId), name: formData.name, content: formData.content});
+    postPaper({boardId: boardId ?? '', name: formData.name, content: formData.content});
   };
 
   useEffect(() => {

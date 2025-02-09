@@ -1,16 +1,23 @@
-
 import {Button} from '@components/Button';
 import Header from '@components/Header/Header';
 import {VStack} from '@components/Stack';
 import {Text} from '@components/Text';
 import Top from '@components/Top/Top';
 import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
+import {useEffect} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
 export default function AdminPage() {
   const navigate = useNavigate();
   const {boardId} = useParams();
-  const {name} = useRequestGetBoard(Number(boardId));
+  // @TODO: @Todari 에러 페이지 및 리다이렉션 로직 분리
+  useEffect(() => {
+    if (!boardId) {
+      navigate('/');
+    }
+  }, [boardId]);
+
+  const {name} = useRequestGetBoard(boardId ?? '');
 
   return (
     <VStack p="6rem 0 0 0">

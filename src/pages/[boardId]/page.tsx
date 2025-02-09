@@ -8,17 +8,24 @@ import Top from '@components/Top/Top';
 import SETTING from '@constants/setting';
 import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
 import {useRequestGetPapersPage} from '@hooks/useRequestGetPapersPage';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
 export default function BoardPage() {
   const navigate = useNavigate();
-  const {boardId} = useParams();
-  const {name} = useRequestGetBoard(Number(boardId));
   const [cursor, setCursor] = useState(0);
+  const {boardId} = useParams();
 
+  // @TODO: @Todari 에러 페이지 및 리다이렉션 로직 분리
+  useEffect(() => {
+    if (!boardId) {
+      navigate('/');
+    }
+  }, [boardId]);
+
+  const {name} = useRequestGetBoard(boardId ?? '');
   const {responses, nextCursor} = useRequestGetPapersPage({
-    boardId: Number(boardId),
+    boardId: boardId ?? '',
     cursor,
     limit: SETTING.papersPageLimit,
   });

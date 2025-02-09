@@ -13,24 +13,24 @@ export type PostBoardResponse = {
 };
 
 export type GetBoardRequestParam = {
-  id: number;
+  id: string;
 };
 
 export type GetBoardResponse = {
-  id: number;
+  id: string;
   name: string;
   showDate: Date;
 };
 
 export type PostPaperRequest = {
-  boardId: number;
+  boardId: string;
   name: string;
   content: string;
 };
 
 export type PostPaperResponse = {
   id: number;
-  boardId: number;
+  boardId: string;
   name: string;
   content: string;
 };
@@ -41,14 +41,14 @@ export type GetPaperRequestParam = {
 
 export type GetPaperResponse = {
   id: number;
-  boardId: number;
+  boardId: string;
   createdAt: Date;
   name: string;
   content: string;
 };
 
 export type GetPapersPageRequestParam = {
-  boardId: number;
+  boardId: string;
   cursor: number;
   limit: number;
 };
