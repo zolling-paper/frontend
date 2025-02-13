@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 import {Box} from '../Box';
 import {HStack} from '../Stack';
@@ -13,34 +13,21 @@ export const DateScrollPicker = ({
 }: DateScrollPickerProps) => {
   const [date, setDate] = useState<PickerDate>(initialDate);
 
-  const handleDateChange = useCallback(
-    (newDate: PickerDate) => {
-      setDate(newDate);
-      onChange(newDate);
-    },
-    [onChange],
-  );
+  useEffect(() => {
+    onChange(date);
+  }, [date]);
 
-  const handleChangeYear = useCallback(
-    (year: number) => {
-      handleDateChange({...date, year});
-    },
-    [date, handleDateChange],
-  );
+  const handleChangeYear = (year: number) => {
+    setDate(prevDate => ({...prevDate, year}));
+  };
 
-  const handleChangeMonth = useCallback(
-    (month: number) => {
-      handleDateChange({...date, month});
-    },
-    [date, handleDateChange],
-  );
+  const handleChangeMonth = (month: number) => {
+    setDate(prevDate => ({...prevDate, month}));
+  };
 
-  const handleChangeDay = useCallback(
-    (day: number) => {
-      handleDateChange({...date, day});
-    },
-    [date, handleDateChange],
-  );
+  const handleChangeDay = (day: number) => {
+    setDate(prevDate => ({...prevDate, day}));
+  };
 
   const getDaysInMonth = () => {
     return new Date(date.year, date.month, 0).getDate();
@@ -69,21 +56,21 @@ export const DateScrollPicker = ({
           options={getYearsArray()}
           initialIndex={date.year - new Date().getFullYear()}
           onChange={handleChangeYear}
-          degree={18}
+          degree={32}
           perspective="left"
         />
         <Scroller
           options={getMonthsArray()}
           initialIndex={date.month - 1}
           onChange={handleChangeMonth}
-          degree={18}
+          degree={32}
           perspective="center"
         />
         <Scroller
           options={getDaysArray()}
           initialIndex={date.day - 1}
           onChange={handleChangeDay}
-          degree={18}
+          degree={32}
           perspective="right"
         />
         <Box

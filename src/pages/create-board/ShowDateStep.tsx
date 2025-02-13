@@ -2,7 +2,7 @@
 import {BoardFormData, Step} from './page';
 
 import {Button} from '@/components/Button';
-import {DatePicker} from '@/components/DatePicker/DatePicker';
+import {DateScrollPicker} from '@/components/DateScrollPicker/DateScrollPicker';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@/components/Input';
 import {VStack} from '@/components/Stack';
@@ -37,10 +37,10 @@ export default function ShowDateStep({formData, setFormData, onSubmit, setStep}:
       </Top>
       <form onSubmit={handleSubmit} css={{width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem'}}>
         <Input labelText="날짜" value={YMDtoDateString(formData.showDate)} disabled />
-        <DatePicker onChange={handleDateChange} initialDate={now} />
+        <DateScrollPicker onChange={handleDateChange} initialDate={now} />
         <FixedBottomCTA direction="row">
           <Button variants="secondary" display="full" size="lg" onClick={() => setStep('password')}>
-            다음
+            이전
           </Button>
           <Button display="full" size="lg" type="submit">
             다음

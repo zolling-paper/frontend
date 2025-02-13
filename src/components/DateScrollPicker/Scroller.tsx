@@ -74,8 +74,15 @@ export const Scroller = ({
     const values = options.map((option, index) => {
       const distance =
         sliderState.slides[index] != null ? (sliderState.slides[index]!.distance - offset) * slidesPerView : 0;
-      const rotate = Math.abs(distance) > 360 / dialDegree / 2 ? 180 : distance * dialDegree * -1;
-      // const rotate = distance * dialDegree * -1;
+      /**
+       * @Todari
+       * const rotate = Math.abs(distance) > 360 / dialDegree / 2 ? 180 : distance * dialDegree * -1;
+       * 으로 되어있을 땐, rotate가 방향에 따라 -180 ,180 두가지 값을 가질 수 있음
+       * 이에 따라서, -180인 경우에 180으로 돌아가면서 앞면에서 보이지 않아야 하는 value가 보이게 됨
+       * 결국 distance(방향)에 따라서, 180, -180 degree로 적용해 줌으로써 슬라이드 할 때 불필요한 값이 보이지 않도록 변경
+       */
+      const rotate =
+        Math.abs(distance) > 360 / dialDegree / 2 ? (distance < 0 ? 180 : -180) : distance * dialDegree * -1;
       const style = {
         transform: `rotateX(${rotate}deg) translateZ(${radius}px)`,
         WebkitTransform: `rotateX(${rotate}deg) translateZ(${radius}px)`,
