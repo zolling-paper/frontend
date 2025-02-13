@@ -13,7 +13,6 @@ import SETTING from '@/constants/setting';
 import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
 import {useRequestPostPaper} from '@/hooks/useRequestPostPaper';
 
-
 interface MessageStepProps {
   formData: PaperFormData;
   setFormData: (data: PaperFormData) => void;
@@ -42,7 +41,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
     if (isSuccess) {
       navigate(`/${boardId}`);
     }
-  }, [isSuccess, boardId]);
+  }, [isSuccess, boardId, navigate]);
 
   return (
     <VStack gap="1rem">

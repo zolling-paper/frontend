@@ -1,0 +1,36 @@
+name: pull-request
+
+on:
+  pull_request:
+    branches: ['main', 'dev']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      # 1. Git 리포지토리 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Node.js 20.15.1 version으로 셋팅
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.15.1'
+
+      # 3. pnpm 설치
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # 4. 의존성 설치
+      - name: Install Dependencies
+        run: pnpm install
+
+      # 5. 린트 실행
+      - name: Run lint
+        run: pnpm run lint

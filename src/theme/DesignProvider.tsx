@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {Global} from '@emotion/react';
 import {GlobalStyle} from '@theme/GlobalStyle';
 import {Theme} from '@theme/theme.type';

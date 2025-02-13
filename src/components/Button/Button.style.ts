@@ -12,13 +12,13 @@ export const buttonContentStyle = css({
 
 export const buttonStyle = (props: Required<ButtonStyleProps>) => {
   return css([
-    getButtonDefaultStyle(props.display, props.theme),
+    getButtonDefaultStyle(props.display),
     getButtonSizeStyle(props.size),
     getButtonVariantsStyle(props.variants, props.theme),
   ]);
 };
 
-const getButtonDefaultStyle = (display: ButtonDisplay, theme: Theme) =>
+const getButtonDefaultStyle = (display: ButtonDisplay) =>
   css({
     display: display === 'full' ? 'flex' : 'block',
     width: display === 'full' ? '100%' : 'auto',
@@ -34,17 +34,17 @@ const getButtonDefaultStyle = (display: ButtonDisplay, theme: Theme) =>
     },
   });
 
-const getHoverAndActiveBackground = (color: string) =>
-  css({
-    // ':not(:disabled)': {
-    //   '&:hover': {
-    //     background: setLighter(color, 0.15),
-    //   },
-    //   '&:active': {
-    //     background: setDarker(color, 0.15),
-    //   },
-    // },
-  });
+// const getHoverAndActiveBackground = (color: string) =>
+//   css({
+//     ':not(:disabled)': {
+//       '&:hover': {
+//         background: setLighter(color, 0.15),
+//       },
+//       '&:active': {
+//         background: setDarker(color, 0.15),
+//       },
+//     },
+//   });
 
 const getButtonSizeStyle = (size: ButtonSize) => {
   const style = {
@@ -79,7 +79,7 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
         boxShadow: `0 0 0 2px ${theme.colors.secondary}`,
         color: theme.colors.secondary,
       }),
-      getHoverAndActiveBackground(theme.colors.primary),
+      // getHoverAndActiveBackground(theme.colors.primary),
     ],
     secondary: [
       css({
@@ -87,9 +87,10 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
         boxShadow: `0 0 0 2px ${theme.colors.secondary}`,
         color: theme.colors.secondary,
       }),
-      getHoverAndActiveBackground(theme.colors.secondary),
+      // getHoverAndActiveBackground(theme.colors.secondary),
     ],
-    ghost: [getHoverAndActiveBackground(theme.colors.white)],
+    ghost: css({}),
+    // ghost: [getHoverAndActiveBackground(theme.colors.white)],
   };
 
   return style[variants];

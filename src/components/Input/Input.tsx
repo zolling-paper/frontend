@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import {Icon} from '@components/Icon';
 import {Text} from '@components/Text';
 import {useTheme} from '@theme/DesignProvider';
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
@@ -81,7 +80,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
             onKeyDown={e => e.key === 'Enter' && onDelete()}
             aria-label="입력 내용 모두 지우기"
           >
-            <Icon iconType="inputDelete" />
+            {/* <Icon iconType="inputDelete" /> */}
           </button>
         )}
       </div>

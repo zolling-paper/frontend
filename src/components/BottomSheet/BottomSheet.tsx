@@ -4,7 +4,7 @@ import {PropsWithChildren} from 'react';
 import {HStack} from '../Stack';
 import {bottomSheetWrapperStyle} from './BottomSheet.style';
 
-interface BottomSheetProps extends PropsWithChildren {}
+type BottomSheetProps = PropsWithChildren;
 
 export const BottomSheet = ({children, ...props}: BottomSheetProps) => {
   return (
