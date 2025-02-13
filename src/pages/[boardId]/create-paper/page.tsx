@@ -30,7 +30,7 @@ export default function CreatePaperPage() {
     if (!boardId) {
       navigate(ROUTE.main);
     }
-  }, [boardId]);
+  }, [boardId, navigate]);
 
   return (
     <VStack p="6rem 0 0 0">
