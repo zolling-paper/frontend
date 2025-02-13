@@ -36,7 +36,7 @@ jobs:
       # 5. 환경변수 파일 github secret에서 가져와서 생성
       - name: Create environments from github secrets
         run: |
-          echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" >> .env.dev
+          echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" >> .env
 
       # 6. Dev 환경으로 빌드
       - name: Build for Dev environment
