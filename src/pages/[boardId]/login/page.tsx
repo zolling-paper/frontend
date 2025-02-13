@@ -9,10 +9,10 @@ import {Text} from '@components/Text';
 import Top from '@components/Top/Top';
 import REGEXP from '@constants/regexp';
 import SETTING from '@constants/setting';
+import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
-import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 
 type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER';
 
