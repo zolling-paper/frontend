@@ -25,20 +25,24 @@ jobs:
         with:
           node-version: '20.15.1'
 
-      # 3. 의존성 설치
+      # 3. pnpm 설치
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # 4. 의존성 설치
       - name: Install Dependencies
         run: pnpm install
 
-      # 4. 환경변수 파일 github secret에서 가져와서 생성
+      # 5. 환경변수 파일 github secret에서 가져와서 생성
       - name: Create environments from github secrets
         run: |
           echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" >> .env.dev
 
-      # 5. Dev 환경으로 빌드
+      # 6. Dev 환경으로 빌드
       - name: Build for Dev environment
         run: pnpm run build
 
-      # 6. AWS 인증 설정
+      # 7. AWS 인증 설정
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -46,11 +50,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # 7. S3에 빌드 결과 업로드
+      # 8. S3에 빌드 결과 업로드
       - name: Upload build results to S3
         run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_NAME }}/dev/ --delete
 
-      # 8. CloudFront 캐시 무효화
+      # 9. CloudFront 캐시 무효화
       - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
