@@ -29,7 +29,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
     if (!boardId) {
       navigate('/');
     }
-  }, [boardId]);
+  }, [boardId, navigate]);
 
   const {mutate: postPaper, isSuccess} = useRequestPostPaper();
   const navigate = useNavigate();

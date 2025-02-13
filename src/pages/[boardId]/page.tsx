@@ -21,7 +21,7 @@ export default function BoardPage() {
     if (!boardId) {
       navigate('/');
     }
-  }, [boardId]);
+  }, [boardId, navigate]);
 
   const {name} = useRequestGetBoard(boardId ?? '');
   const {responses, prevCursor, hasNext, nextCursor} = useRequestGetPapersPage({

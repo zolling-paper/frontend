@@ -15,7 +15,7 @@ export default function AdminPage() {
     if (!boardId) {
       navigate('/');
     }
-  }, [boardId]);
+  }, [boardId, navigate]);
 
   const {name} = useRequestGetBoard(boardId ?? '');
 

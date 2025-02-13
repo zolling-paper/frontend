@@ -1,4 +1,3 @@
-
 import {getPaper} from '@apis/paper';
 import QUERY_KEY from '@constants/queryKey';
 import {useQuery} from '@tanstack/react-query';
