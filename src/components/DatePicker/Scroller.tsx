@@ -90,9 +90,6 @@ export const Scroller = ({
       };
       const value = option;
 
-      if (Number(value) >= 2000) {
-        console.log(value, rotate);
-      }
       return {value, style};
     });
 
