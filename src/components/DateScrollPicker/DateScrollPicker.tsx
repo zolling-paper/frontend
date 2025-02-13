@@ -15,7 +15,7 @@ export const DateScrollPicker = ({
 
   useEffect(() => {
     onChange(date);
-  }, [date, onChange]);
+  }, [date]);
 
   const handleChangeYear = (year: number) => {
     setDate(prevDate => ({...prevDate, year}));
