@@ -1,8 +1,15 @@
-import { createBrowserRouter } from 'react-router-dom';
 import ROUTE from '@constants/route';
-import MainPage from '@pages/MainPage/MainPage';
-import { Suspense } from 'react';
+import {Suspense} from 'react';
+import {createBrowserRouter} from 'react-router-dom';
+
 import App from './App';
+import AdminPage from './pages/[boardId]/\badmin/page';
+import CreatePaperPage from './pages/[boardId]/create-paper/page';
+import LoginPage from './pages/[boardId]/login/page';
+import BoardPage from './pages/[boardId]/page';
+import CreateBoardPage from './pages/create-board/page';
+import MainPage from './pages/page';
+
 const router = createBrowserRouter([
   {
     path: '',
@@ -17,10 +24,26 @@ const router = createBrowserRouter([
         path: ROUTE.main,
         element: <MainPage />,
       },
-      // {
-      //   path: '*',
-      //   element: <ErrorPage />,
-      // },
+      {
+        path: ROUTE.createBoard,
+        element: <CreateBoardPage />,
+      },
+      {
+        path: ROUTE.board,
+        element: <BoardPage />,
+      },
+      {
+        path: ROUTE.createPaper,
+        element: <CreatePaperPage />,
+      },
+      {
+        path: ROUTE.login,
+        element: <LoginPage />,
+      },
+      {
+        path: ROUTE.admin,
+        element: <AdminPage />,
+      },
     ],
   },
 ]);

@@ -1,50 +1,109 @@
-# React + TypeScript + Vite
+# 📚 졸링페이퍼 프로젝트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+졸링페이퍼는 졸업식 날 롤링페이퍼로 마음을 전달할 수 있는 웹 애플리케이션입니다.
 
-Currently, two official plugins are available:
+## 🛠 기술 스택
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **프론트엔드**: React, TypeScript, Vite
+- **스타일링**: Emotion
+- **패키지 매니저**: pnpm
+- **CI/CD**: GitHub Actions
+- **호스팅**: AWS S3, CloudFront
 
-## Expanding the ESLint configuration
+## 📂 프로젝트 구조
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+📦src
+ ┣ 📂apis
+ ┣ 📂assets
+ ┣ 📂components
+ ┣ 📂constants
+ ┣ 📂hooks
+ ┣ 📂pages
+ ┣ 📂theme
+ ┣ 📂token
+ ┣ 📂type
+ ┣ 📂utils
+ ┣ 📜main.tsx
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 주요 디렉토리
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **apis**: API 관련 파일들이 위치합니다.
+- **assets**: 정적 파일들이 위치합니다.
+- **components**: 재사용 가능한 UI 컴포넌트들이 위치합니다.
+- **constants**: 상수 관련 파일들이 위치합니다.
+- **hooks**: 커스텀 훅들이 위치합니다.
+- **pages**: 각 페이지별로 구성된 컴포넌트들이 위치합니다.
+- **theme**: 전역 스타일 및 테마 관련 파일들이 위치합니다.
+- **token**: 디자인 토큰 관련 파일들이 위치합니다.
+- **type**: 타입 관련 파일들이 위치합니다.
+- **utils**: 유틸리티 함수들이 위치합니다.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 🚀 배포
+
+### CI/CD
+
+GitHub Actions를 사용하여 자동화된 배포 파이프라인을 구축하였습니다. `dev` 브랜치에 푸시될 때마다 개발 환경으로 배포되며, `main` 브랜치에 푸시될 때마다 프로덕션 환경으로 배포됩니다.
+
+### 인프라 구조
+
+AWS 서비스를 활용하여 안정적이고 효율적인 배포 환경을 구축하였습니다.
+
+#### Amazon S3
+
+- 정적 웹사이트 호스팅에 S3 버킷을 사용합니다.
+- 개발(`/dev`)과 프로덕션(`/prod`) 환경을 분리하여 관리합니다.
+- GitHub Actions를 통해 자동으로 빌드된 파일이 S3에 업로드됩니다.
+
+#### Amazon CloudFront
+
+- CloudFront를 통해 전세계 사용자에게 빠른 콘텐츠 전송을 제공합니다.
+- SSL/TLS 인증서를 통한 HTTPS 보안 연결을 지원합니다.
+- 캐시 무효화를 통해 새로운 배포 시 즉시 반영이 가능합니다.
+- 엣지 로케이션을 통한 낮은 지연 시간과 높은 전송 속도를 보장합니다.
+
+## 📄 주요 기능
+
+### 보드 생성 및 관리
+
+- **이름 입력**: 사용자는 자신의 이름을 입력하여 롤링페이퍼를 생성할 수 있습니다.
+- **비밀번호 설정**: 비밀번호를 설정하여 나만 볼 수 있는 롤링페이퍼를 만들 수 있습니다.
+- **날짜 선택**: 롤링페이퍼를 확인할 수 있는 공개 날짜를 설정할 수 있습니다.
+- **URL 공유**: 생성된 롤링페이퍼의 URL을 공유하여 다른 사람들에게 롤링페이퍼 작성을 부탁할 수 있습니다.
+
+### 메시지 작성
+
+- **이름 입력**: 작성자 본인의 이름 혹은 닉네임을 입력하여 롤링페이퍼를 작성할 수 있습니다.
+- **메세지 작성**: 졸업하는 친구에게 진심을 담은 롤링페이퍼를 작성할 수 있습니다.
+
+## 📝 접속 방법
+
+- https://zolling.me/
+
+## 📝 프로젝트 실행 방법
+
+1. 프로젝트를 클론합니다.
+   ```bash
+   git clone https://github.com/zolling-paper/frontend.git
+   ```
+2. 의존성을 설치합니다.
+   ```bash
+   pnpm install
+   ```
+3. 개발 서버를 시작합니다.
+   ```bash
+   pnpm run dev
+   ```
+
+## 🤝 기여
+
+기여를 환영합니다! 이 프로젝트에 기여하고 싶다면, 이슈를 생성하거나 풀 리퀘스트를 제출해 주세요.
+
+## 📧 문의
+
+프로젝트에 대한 문의는 [이메일](zollingpaper@gmail.com)로 연락해 주세요.
+
+---
+
+이 README는 프로젝트의 전반적인 개요와 설정을 이해하는 데 도움이 되기를 바랍니다. 🎉

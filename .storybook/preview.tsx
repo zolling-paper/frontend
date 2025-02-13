@@ -1,7 +1,10 @@
+import {Global} from '@emotion/react';
 import React from 'react';
-import type {Preview} from '@storybook/react';
-import {Global, css} from '@emotion/react';
+
 import {DesignProvider} from '../src/theme/DesignProvider';
+import {GlobalStyle} from '../src/theme/GlobalStyle';
+
+import type {Preview} from '@storybook/react';
 
 const preview: Preview = {
   parameters: {
@@ -16,15 +19,8 @@ const preview: Preview = {
     Story => {
       return (
         <div>
-          <Global
-            styles={css`
-              @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-              body {
-                font-family: 'Pretendard', sans-serif;
-              }
-            `}
-          />
           <DesignProvider>
+            <Global styles={GlobalStyle} />
             <Story />
           </DesignProvider>
         </div>
