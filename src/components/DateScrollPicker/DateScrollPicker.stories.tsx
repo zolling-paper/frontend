@@ -1,12 +1,12 @@
 import {Button} from '../Button';
-import {DatePicker} from './DatePicker';
+import {DateScrollPicker} from './DateScrollPicker';
 import {Overlay} from '../Overlay/OverlayContext';
 import {useOverlay} from '../Overlay/useOverlay';
 
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta = {
-  title: 'Components/DatePicker',
+  title: 'Components/DateScrollPicker',
   parameters: {
     layout: 'centered',
   },
@@ -28,11 +28,11 @@ type Story = StoryObj<typeof meta>;
 const DemoComponent = () => {
   const {open} = useOverlay();
 
-  const handleOpenDatePicker = () => {
+  const handleOpenDateScrollPicker = () => {
     const key = 'date-picker';
     open(
       key,
-      <DatePicker
+      <DateScrollPicker
         onChange={date => {
           console.log(date);
         }}
@@ -40,7 +40,7 @@ const DemoComponent = () => {
     );
   };
 
-  return <Button onClick={handleOpenDatePicker}>날짜 선택하기</Button>;
+  return <Button onClick={handleOpenDateScrollPicker}>날짜 선택하기</Button>;
 };
 
 export const Default: Story = {

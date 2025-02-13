@@ -1,17 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import {useTheme} from '@theme/DesignProvider';
 import {useCallback, useState} from 'react';
 
 import {Box} from '../Box';
 import {HStack} from '../Stack';
-import {backgroundStyle, datePickerAlignStyle} from './DatePicker.style';
-import {DatePickerProps, PickerDate} from './DatePicker.type';
+import {backgroundStyle, dateScrollPickerAlignStyle} from './DateScrollPicker.style';
+import {DateScrollPickerProps, PickerDate} from './DateScrollPicker.type';
 import {Scroller} from './Scroller';
 
-export const DatePicker = ({
+export const DateScrollPicker = ({
   onChange,
   initialDate = {year: new Date().getFullYear(), month: 0, day: 0},
-}: DatePickerProps) => {
+}: DateScrollPickerProps) => {
   const [date, setDate] = useState<PickerDate>(initialDate);
 
   const handleDateChange = useCallback(
@@ -48,7 +47,7 @@ export const DatePicker = ({
   };
 
   const getYearsArray = () => {
-    return Array.from({length: 10}, (_, index) => index + new Date().getFullYear());
+    return Array.from({length: 12}, (_, index) => index + new Date().getFullYear());
   };
 
   const getMonthsArray = () => {
@@ -70,21 +69,21 @@ export const DatePicker = ({
           options={getYearsArray()}
           initialIndex={date.year - new Date().getFullYear()}
           onChange={handleChangeYear}
-          degree={32}
+          degree={18}
           perspective="left"
         />
         <Scroller
           options={getMonthsArray()}
           initialIndex={date.month - 1}
           onChange={handleChangeMonth}
-          degree={32}
+          degree={18}
           perspective="center"
         />
         <Scroller
           options={getDaysArray()}
           initialIndex={date.day - 1}
           onChange={handleChangeDay}
-          degree={32}
+          degree={18}
           perspective="right"
         />
         <Box
@@ -94,13 +93,13 @@ export const DatePicker = ({
           br="1rem"
           h="2.5rem"
           z={-10}
-          css={datePickerAlignStyle}
+          css={dateScrollPickerAlignStyle}
         />
-        <Box w="100%" h="100%" z={-20} css={datePickerAlignStyle} />
+        <Box w="100%" h="100%" z={-20} css={dateScrollPickerAlignStyle} />
         <Box w="100%" h="100%" z={10} css={backgroundStyle} />
       </HStack>
     </div>
   );
 };
 
-export default DatePicker;
+export default DateScrollPicker;
