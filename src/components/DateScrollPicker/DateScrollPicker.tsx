@@ -1,55 +1,40 @@
 /** @jsxImportSource @emotion/react */
-import {useTheme} from '@theme/DesignProvider';
-import {useCallback, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {Box} from '../Box';
 import {HStack} from '../Stack';
-import {backgroundStyle, datePickerAlignStyle} from './DatePicker.style';
-import {DatePickerProps, PickerDate} from './DatePicker.type';
+import {backgroundStyle, dateScrollPickerAlignStyle} from './DateScrollPicker.style';
+import {DateScrollPickerProps, PickerDate} from './DateScrollPicker.type';
 import {Scroller} from './Scroller';
 
-export const DatePicker = ({
+export const DateScrollPicker = ({
   onChange,
   initialDate = {year: new Date().getFullYear(), month: 0, day: 0},
-}: DatePickerProps) => {
-  const {theme} = useTheme();
+}: DateScrollPickerProps) => {
   const [date, setDate] = useState<PickerDate>(initialDate);
 
-  const handleDateChange = useCallback(
-    (newDate: PickerDate) => {
-      setDate(newDate);
-      onChange(newDate);
-    },
-    [onChange],
-  );
+  useEffect(() => {
+    onChange(date);
+  }, [date]);
 
-  const handleChangeYear = useCallback(
-    (year: number) => {
-      handleDateChange({...date, year});
-    },
-    [date, handleDateChange],
-  );
+  const handleChangeYear = (year: number) => {
+    setDate(prevDate => ({...prevDate, year}));
+  };
 
-  const handleChangeMonth = useCallback(
-    (month: number) => {
-      handleDateChange({...date, month});
-    },
-    [date, handleDateChange],
-  );
+  const handleChangeMonth = (month: number) => {
+    setDate(prevDate => ({...prevDate, month}));
+  };
 
-  const handleChangeDay = useCallback(
-    (day: number) => {
-      handleDateChange({...date, day});
-    },
-    [date, handleDateChange],
-  );
+  const handleChangeDay = (day: number) => {
+    setDate(prevDate => ({...prevDate, day}));
+  };
 
   const getDaysInMonth = () => {
     return new Date(date.year, date.month, 0).getDate();
   };
 
   const getYearsArray = () => {
-    return Array.from({length: 10}, (_, index) => index + new Date().getFullYear());
+    return Array.from({length: 12}, (_, index) => index + new Date().getFullYear());
   };
 
   const getMonthsArray = () => {
@@ -95,13 +80,13 @@ export const DatePicker = ({
           br="1rem"
           h="2.5rem"
           z={-10}
-          css={datePickerAlignStyle}
+          css={dateScrollPickerAlignStyle}
         />
-        <Box w="100%" h="100%" z={-20} css={datePickerAlignStyle} />
+        <Box w="100%" h="100%" z={-20} css={dateScrollPickerAlignStyle} />
         <Box w="100%" h="100%" z={10} css={backgroundStyle} />
       </HStack>
     </div>
   );
 };
 
-export default DatePicker;
+export default DateScrollPicker;

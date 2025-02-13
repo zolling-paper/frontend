@@ -1,8 +1,8 @@
 import {css} from '@emotion/react';
 
-import {Perspective} from './DatePicker.type';
+import {Perspective} from './DateScrollPicker.type';
 
-export const datePickerAlignStyle = css`
+export const dateScrollPickerAlignStyle = css`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -18,7 +18,7 @@ export const backgroundStyle = css`
     rgba(255, 255, 255, 0) 75%,
     rgba(255, 255, 255, 1) 100%
   ); */
-  ${datePickerAlignStyle}
+  ${dateScrollPickerAlignStyle}
 `;
 
 export const scrollContainerStyle = css`
@@ -36,6 +36,7 @@ export const scrollContainerStyle = css`
   &[data-keen-slider-moves] * {
     pointer-events: none;
   }
+  background: transparent;
 `;
 
 export const scrollerStyle = (perspective: Perspective) => css`
