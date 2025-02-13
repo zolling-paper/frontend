@@ -4,6 +4,13 @@ import {SEMANTIC_COLORS} from '../token/colors';
 
 // reset css -> index css
 export const GlobalStyle = css`
+  @font-face {
+    font-family: 'NeoDunggeunmo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
     all: unset;
     display: revert;
