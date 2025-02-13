@@ -28,7 +28,7 @@
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@router/*": ["src/router/*"],
+      "@pages/*": ["src/pages/*"],
       "@theme/*": ["src/theme/*"],
       "@token/*": ["src/token/*"],
       "@type/*": ["src/type/*"],

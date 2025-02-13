@@ -1,15 +1,16 @@
 /** @jsxImportSource @emotion/react */
+
+
+import {Button} from '@components/Button';
+import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
+import {Input} from '@components/Input';
+import {VStack} from '@components/Stack';
+import Top from '@components/Top/Top';
+import REGEXP from '@constants/regexp';
+import SETTING from '@constants/setting';
 import {useState} from 'react';
 
 import {PaperFormData, Step} from './page';
-
-import {Button} from '@/components/Button';
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import {Input} from '@/components/Input';
-import {VStack} from '@/components/Stack';
-import Top from '@/components/Top/Top';
-import REGEXP from '@/constants/regexp';
-import SETTING from '@/constants/setting';
 
 interface NameStepProps {
   formData: PaperFormData;
@@ -38,22 +39,28 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
 
   const validateNameLength = (name: string) => {
     if (name.length < SETTING.nameMinLength && name.length !== 0) {
-      setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', true);
-        prev.set('EXCEED_LENGTH', false);
-        return prev;
+      setError(() => {
+        const newMap = new Map<NameErrorType, boolean>([
+          ['NOT_ENOUGH_LENGTH', true],
+          ['EXCEED_LENGTH', false],
+        ]);
+        return newMap;
       });
     } else if (name.length > SETTING.nameMaxLength) {
-      setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', false);
-        prev.set('EXCEED_LENGTH', true);
-        return prev;
+      setError(() => {
+        const newMap = new Map<NameErrorType, boolean>([
+          ['NOT_ENOUGH_LENGTH', false],
+          ['EXCEED_LENGTH', true],
+        ]);
+        return newMap;
       });
     } else {
-      setError(prev => {
-        prev.set('NOT_ENOUGH_LENGTH', false);
-        prev.set('EXCEED_LENGTH', false);
-        return prev;
+      setError(() => {
+        const newMap = new Map<NameErrorType, boolean>([
+          ['NOT_ENOUGH_LENGTH', false],
+          ['EXCEED_LENGTH', false],
+        ]);
+        return newMap;
       });
     }
   };
@@ -61,13 +68,13 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
   const validateNameType = (name: string) => {
     if (!REGEXP.name.test(name)) {
       setError(prev => {
-        prev.set('INVALID_CHARACTER', true);
-        return prev;
+        const newMap = new Map<NameErrorType, boolean>([...prev, ['INVALID_CHARACTER', true]]);
+        return newMap;
       });
     } else {
       setError(prev => {
-        prev.set('INVALID_CHARACTER', false);
-        return prev;
+        const newMap = new Map<NameErrorType, boolean>([...prev, ['INVALID_CHARACTER', false]]);
+        return newMap;
       });
     }
   };
@@ -90,6 +97,10 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
     setFormData({...formData, name: replacedName});
   };
 
+  const handleDelete = () => {
+    setFormData({...formData, name: ''});
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStep('message');
@@ -98,7 +109,7 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
   return (
     <VStack gap="1rem">
       <Top>
-        <Top.Line text="받는 사람에게 보일" />
+        <Top.Line text="메세지에 보일" />
         <Top.Line text="나의 이름을 입력하세요" emphasize={['나의 이름']} />
       </Top>
       <form onSubmit={handleSubmit} css={{width: '100%'}}>
@@ -111,6 +122,7 @@ export default function NameStep({formData, setFormData, setStep}: NameStepProps
           hasError={hasError}
           maxLength={SETTING.nameMaxLength}
           autoFocus={true}
+          onDelete={handleDelete}
         />
         <FixedBottomCTA>
           <Button display="full" size="lg" type="submit" disabled={!canSubmit}>

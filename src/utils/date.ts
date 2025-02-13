@@ -1,4 +1,4 @@
-import {YMD} from '@/types/model';
+import {YMD} from '@type/model';
 
 export const YMDtoDate = (ymd: YMD) => {
   const date = new Date(ymd.year, ymd.month - 1, ymd.day);

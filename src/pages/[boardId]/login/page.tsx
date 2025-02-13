@@ -13,7 +13,6 @@ import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
-
 type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER';
 
 type PasswordError = Map<PasswordErrorType, boolean>;

@@ -15,6 +15,7 @@ export const Text: React.FC<TextProps> = ({
   ...attributes
 }: TextProps) => {
   const {theme} = useTheme();
+
   return (
     <p css={getSizeStyling({size, textColor, theme, responsive})} {...attributes}>
       {children === '' ? '\u00A0' : children}

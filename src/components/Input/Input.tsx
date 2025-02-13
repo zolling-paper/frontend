@@ -14,17 +14,7 @@ import {
 import {InputProps} from './Input.type';
 
 export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(function Input(
-  {
-    value,
-    onChange,
-    onDelete,
-    placeholder,
-    autoFocus = false,
-    labelText,
-    errorText = '',
-    hasError,
-    ...htmlProps
-  }: InputProps,
+  {value, onChange, placeholder, autoFocus = false, labelText, errorText = '', hasError, ...htmlProps}: InputProps,
   ref,
 ) {
   const {theme} = useTheme();
@@ -47,6 +37,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     };
   }, []);
 
+  //TODO: (@Todari): Icon 문자열 파싱 문제 해결
   return (
     <div css={inputLayoutStyle}>
       {(labelText || errorText) && (
@@ -73,16 +64,6 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
           autoFocus={autoFocus}
           {...htmlProps}
         />
-        {onDelete && value && hasFocus && (
-          <button
-            type="button"
-            onClick={onDelete}
-            onKeyDown={e => e.key === 'Enter' && onDelete()}
-            aria-label="입력 내용 모두 지우기"
-          >
-            {/* <Icon iconType="inputDelete" /> */}
-          </button>
-        )}
       </div>
     </div>
   );
