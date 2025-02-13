@@ -12,7 +12,7 @@ import SETTING from '@constants/setting';
 import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
-import {useRequestPostLogin} from '@/hooks/useRequestPostLogin';
+import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 
 type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER';
 
