@@ -24,6 +24,9 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
   const {boardId} = useParams();
   const {name} = useRequestGetBoard(boardId ?? '');
 
+  const {mutate: postPaper, isSuccess} = useRequestPostPaper();
+  const navigate = useNavigate();
+
   // @TODO: @Todari 에러 페이지 및 리다이렉션 로직 분리
   useEffect(() => {
     if (!boardId) {
@@ -31,8 +34,6 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
     }
   }, [boardId, navigate]);
 
-  const {mutate: postPaper, isSuccess} = useRequestPostPaper();
-  const navigate = useNavigate();
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({...formData, content: e.target.value});
   };

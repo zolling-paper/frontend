@@ -41,7 +41,7 @@ export default function ShowDateStep({formData, setFormData, onSubmit, setStep}:
         <DateScrollPicker onChange={handleDateChange} initialDate={now} />
         <FixedBottomCTA direction="row">
           <Button variants="secondary" display="full" size="lg" onClick={() => setStep('password')}>
-            이전 이전
+            이전
           </Button>
           <Button display="full" size="lg" type="submit">
             다음
