@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
+import {useRequestPostLogin} from '@/hooks/useRequestPostLogin';
 import {Button} from '@components/Button';
 import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@components/Header/Header';
@@ -32,6 +33,7 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
   const {boardId} = useParams();
+  const {mutate: postLogin} = useRequestPostLogin();
 
   const validatePasswordLength = (password: string) => {
     if (password.length < SETTING.passwordLength && password.length !== 0) {
@@ -85,6 +87,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    postLogin({password, id: boardId ?? ''});
     navigate(`/${boardId}/admin`);
   };
 

@@ -8,9 +8,7 @@ import {
 } from '@type/services';
 import {http} from '@utils/http';
 
-import {getEnvVariable} from '@/env';
-
-const API_BASE_URL = getEnvVariable('VITE_API_BASE_URL');
+import {API_BASE_URL} from './config';
 
 export const postPaper = async (data: PostPaperRequest) => {
   return http.post<PostPaperRequest, PostPaperResponse>(`${API_BASE_URL}/paper`, data);

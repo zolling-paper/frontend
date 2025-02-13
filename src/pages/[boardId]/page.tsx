@@ -24,15 +24,11 @@ export default function BoardPage() {
   }, [boardId]);
 
   const {name} = useRequestGetBoard(boardId ?? '');
-  const {responses, nextCursor} = useRequestGetPapersPage({
+  const {responses, prevCursor, hasNext, nextCursor} = useRequestGetPapersPage({
     boardId: boardId ?? '',
     cursor,
     limit: SETTING.papersPageLimit,
   });
-
-  // const isFirstPage = responses?.[0]?.paperId === 1;
-  // const isLastPage = hasNext === false;
-
   const handleClickPrev = () => {
     setCursor(0);
   };
@@ -48,19 +44,19 @@ export default function BoardPage() {
         <Top>
           <Top.Line text={`${name}님의 보드`} emphasize={[`${name}`]} />
         </Top>
-        <PaperThumbnailView papers={responses ?? []} />
         <HStack justify="space-between">
-          <Button variants="ghost" size="sm" onClick={handleClickPrev}>
+          <Button variants="ghost" size="sm" onClick={handleClickPrev} disabled={!prevCursor}>
             <Text size="bodyBold" textColor="gray">
               {`<  이전`}
             </Text>
           </Button>
-          <Button variants="ghost" size="sm" onClick={handleClickNext}>
+          <Button variants="ghost" size="sm" onClick={handleClickNext} disabled={!hasNext}>
             <Text size="bodyBold" textColor="gray">
               {`다음  >`}
             </Text>
           </Button>
         </HStack>
+        <PaperThumbnailView papers={responses ?? []} />
       </VStack>
       <FixedBottomCTA>
         <Button display="full" size="lg" onClick={() => navigate(`/${boardId}/create-paper`)}>

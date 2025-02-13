@@ -56,5 +56,11 @@ export type GetPapersPageRequestParam = {
 export type GetPapersPageResponse = {
   responses: MultiplePaper[];
   hasNext: boolean;
-  nextCursor: number;
+  prevCursor: number | null;
+  nextCursor: number | null;
+};
+
+export type PostLoginRequest = {
+  id: string;
+  password: string;
 };
