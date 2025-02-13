@@ -14,7 +14,7 @@ function App() {
       <Box
         bg={theme.colors.background}
         w="full"
-        h="100vh"
+        h="100dvh"
         css={css({
           position: 'relative',
         })}
