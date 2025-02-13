@@ -48,7 +48,7 @@ export default function CreateBoardPage() {
     if (isSuccess) {
       navigate(`/${data.id}`);
     }
-  }, [isSuccess, data]);
+  }, [isSuccess, data, navigate]);
 
   return (
     <VStack p="6rem 0 0 0">

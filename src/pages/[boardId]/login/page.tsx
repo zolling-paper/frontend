@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 
-import {useRequestPostLogin} from '@/hooks/useRequestPostLogin';
 import {Button} from '@components/Button';
 import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@components/Header/Header';
@@ -10,6 +9,7 @@ import {Text} from '@components/Text';
 import Top from '@components/Top/Top';
 import REGEXP from '@constants/regexp';
 import SETTING from '@constants/setting';
+import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 

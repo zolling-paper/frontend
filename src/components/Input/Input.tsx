@@ -81,7 +81,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
             onKeyDown={e => e.key === 'Enter' && onDelete()}
             aria-label="입력 내용 모두 지우기"
           >
-            <IconXCircle />
+            {/* <Icon iconType="inputDelete" /> */}
           </button>
         )} */}
       </div>

@@ -48,7 +48,7 @@ export default function MessageStep({formData, setFormData, setStep}: MessageSte
     if (isSuccess) {
       navigate(`/${boardId}`);
     }
-  }, [isSuccess, boardId]);
+  }, [isSuccess, boardId, navigate]);
 
   return (
     <VStack gap="1rem">

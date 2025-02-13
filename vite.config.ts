@@ -1,7 +1,11 @@
-import path from 'path';
+import path, {dirname} from 'path';
+import {fileURLToPath} from 'url';
 
 import react from '@vitejs/plugin-react';
 import {defineConfig} from 'vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -17,8 +21,6 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@utils': path.resolve(__dirname, './src/utils'),
-      '@apis': path.resolve(__dirname, './src/apis'),
-      '@type': path.resolve(__dirname, './src/type'),
       '@assets': path.resolve(__dirname, './src/assets'),
     },
   },

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "ES2020",
+    "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -25,17 +25,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@apis/*": ["src/apis/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
       "@theme/*": ["src/theme/*"],
       "@token/*": ["src/token/*"],
-      "@constants/*": ["src/constants/*"],
-      "@pages/*": ["src/pages/*"],
-      "@router/*": ["src/router/*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@apis/*": ["src/apis/*"],
       "@type/*": ["src/type/*"],
-      "@assets/*": ["src/assets/*"]
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]

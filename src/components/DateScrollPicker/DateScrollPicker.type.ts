@@ -4,7 +4,7 @@ export type PickerDate = {
   day: number;
 };
 
-export interface DatePickerProps {
+export interface DateScrollPickerProps {
   onChange: (date: PickerDate) => void;
   initialDate?: PickerDate;
 }

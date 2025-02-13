@@ -36,17 +36,17 @@ const getButtonDefaultStyle = (display: ButtonDisplay) =>
     },
   });
 
-const getHoverAndActiveBackground = (color: string) =>
-  css({
-    ':not(:disabled)': {
-      '&:hover': {
-        background: setLighter(color, 0.15),
-      },
-      '&:active': {
-        background: setDarker(color, 0.15),
-      },
-    },
-  });
+// const getHoverAndActiveBackground = (color: string) =>
+//   css({
+//     ':not(:disabled)': {
+//       '&:hover': {
+//         background: setLighter(color, 0.15),
+//       },
+//       '&:active': {
+//         background: setDarker(color, 0.15),
+//       },
+//     },
+//   });
 
 const getButtonSizeStyle = (size: ButtonSize) => {
   const style = {
@@ -81,7 +81,7 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
         boxShadow: `0 0 0 2px ${theme.colors.secondary}`,
         color: theme.colors.secondary,
       }),
-      getHoverAndActiveBackground(theme.colors.primary),
+      // getHoverAndActiveBackground(theme.colors.primary),
     ],
     secondary: [
       css({
@@ -89,9 +89,10 @@ const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
         boxShadow: `0 0 0 2px ${theme.colors.secondary}`,
         color: theme.colors.secondary,
       }),
-      getHoverAndActiveBackground(theme.colors.secondary),
+      // getHoverAndActiveBackground(theme.colors.secondary),
     ],
-    ghost: [getHoverAndActiveBackground(theme.colors.white)],
+    ghost: css({}),
+    // ghost: [getHoverAndActiveBackground(theme.colors.white)],
   };
 
   return style[variants];
