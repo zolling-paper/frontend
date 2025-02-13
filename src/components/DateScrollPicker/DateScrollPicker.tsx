@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {Box} from '../Box';
 import {HStack} from '../Stack';
