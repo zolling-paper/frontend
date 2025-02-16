@@ -36,7 +36,7 @@ export type PostPaperResponse = {
 };
 
 export type GetPaperRequestParam = {
-  id: number;
+  id: string;
 };
 
 export type GetPaperResponse = {

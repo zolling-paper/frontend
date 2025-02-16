@@ -2,7 +2,7 @@
 import {css} from '@emotion/react';
 import {MultiplePaper} from '@type/model';
 
-import {PaperThumbnail} from '../PaperThumbnail/PaperThumbnail';
+import {PaperThumbnail} from './PaperThumbnail';
 
 interface Params {
   papers: MultiplePaper[];
@@ -15,11 +15,11 @@ const gridStyle = css({
   gap: '1rem',
 });
 
-export function PaperThumbnailView({papers}: Params) {
+export function PaperThumbnailGrid({papers}: Params) {
   return (
     <div css={gridStyle}>
       {papers.map(paper => (
-        <PaperThumbnail key={paper.paperId} paper={paper} />
+        <PaperThumbnail key={paper.id} paper={paper} />
       ))}
     </div>
   );
