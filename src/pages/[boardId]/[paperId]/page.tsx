@@ -1,14 +1,15 @@
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
+
+import {Button} from '@/components/Button';
+import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@/components/Header/Header';
 import {VStack} from '@/components/Stack';
-import Top from '@/components/Top/Top';
-import {Button} from '@/components/Button';
-import {Text} from '@/components/Text';
 import {HStack} from '@/components/Stack';
-import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
-import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
-import {useRequestGetPaper} from '@/hooks/useRequestGetPaper';
+import {Text} from '@/components/Text';
 import {TextArea} from '@/components/TextArea/TextArea';
+import Top from '@/components/Top/Top';
+import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
+import {useRequestGetPaper} from '@/hooks/useRequestGetPaper';
 
 export default function PaperPage() {
   const navigate = useNavigate();

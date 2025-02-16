@@ -1,4 +1,3 @@
-import {PaperThumbnailGrid} from '@/pages/[boardId]/PaperThumbnailGrid';
 import {Button} from '@components/Button';
 import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@components/Header/Header';
@@ -10,6 +9,8 @@ import {useRequestGetBoard} from '@hooks/useRequestGetBoard';
 import {useRequestGetPapersPage} from '@hooks/useRequestGetPapersPage';
 import {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
+
+import {PaperThumbnailGrid} from '@/pages/[boardId]/PaperThumbnailGrid';
 
 interface Props {
   isAdmin?: boolean;
