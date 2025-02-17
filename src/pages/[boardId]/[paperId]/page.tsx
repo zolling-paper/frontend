@@ -4,11 +4,8 @@ import {Button} from '@/components/Button';
 import FixedBottomCTA from '@/components/FixedBottomCTA/FixedBottomCTA';
 import Header from '@/components/Header/Header';
 import {VStack} from '@/components/Stack';
-import {HStack} from '@/components/Stack';
-import {Text} from '@/components/Text';
 import {TextArea} from '@/components/TextArea/TextArea';
 import Top from '@/components/Top/Top';
-import {useRequestGetBoard} from '@/hooks/useRequestGetBoard';
 import {useRequestGetPaper} from '@/hooks/useRequestGetPaper';
 
 export default function PaperPage() {
