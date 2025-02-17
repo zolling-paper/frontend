@@ -4,6 +4,7 @@ import {VStack} from '@components/Stack';
 import {Text} from '@components/Text';
 import {css} from '@emotion/react';
 import {MultiplePaper} from '@type/model';
+import {useNavigate, useParams} from 'react-router-dom';
 
 import {useTheme} from '@/theme/DesignProvider';
 
@@ -17,6 +18,13 @@ export const thumbnailStyle = css({
 
 export function PaperThumbnail({paper}: Params) {
   const {theme} = useTheme();
+  const navigate = useNavigate();
+  const {boardId} = useParams();
+
+  const handleClickPaper = () => {
+    navigate(`/${boardId}/${paper.id}`, {state: {...paper}});
+  };
+
   return (
     <VStack
       css={thumbnailStyle}
@@ -25,6 +33,7 @@ export function PaperThumbnail({paper}: Params) {
       br="0.5rem"
       bg={theme.gradients.secondaryContainer}
       b={`2px solid ${theme.colors.secondary}`}
+      onClick={handleClickPaper}
     >
       <Text textColor="secondary">{paper.name}</Text>
     </VStack>

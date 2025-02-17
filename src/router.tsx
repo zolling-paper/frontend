@@ -3,7 +3,8 @@ import {Suspense} from 'react';
 import {createBrowserRouter} from 'react-router-dom';
 
 import App from './App';
-import AdminPage from './pages/[boardId]/\badmin/page';
+import PaperPage from './pages/[boardId]/[paperId]/page';
+import AdminPage from './pages/[boardId]/admin/page';
 import CreatePaperPage from './pages/[boardId]/create-paper/page';
 import LoginPage from './pages/[boardId]/login/page';
 import BoardPage from './pages/[boardId]/page';
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: ROUTE.createPaper,
         element: <CreatePaperPage />,
+      },
+      {
+        path: ROUTE.paper,
+        element: <PaperPage />,
       },
       {
         path: ROUTE.login,

@@ -18,7 +18,7 @@ export type YMD = {
 };
 
 export type MultiplePaper = {
-  paperId: number;
+  id: number;
   createdAt: Date;
   name: string;
   content: string;

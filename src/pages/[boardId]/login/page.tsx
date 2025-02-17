@@ -13,13 +13,14 @@ import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
-type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER';
+type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER' | 'INVALID_PASSWORD';
 
 type PasswordError = Map<PasswordErrorType, boolean>;
 
 const ERROR_MESSAGE: Record<PasswordErrorType, string> = {
   INVALID_CHARACTER: '비밀번호는 숫자만 입력 가능해요',
   NOT_ENOUGH_LENGTH: `비밀번호는 ${SETTING.passwordLength}자 이어야 합니다.`,
+  INVALID_PASSWORD: '비밀번호가 일치하지 않아요',
 };
 
 export default function LoginPage() {
@@ -28,12 +29,13 @@ export default function LoginPage() {
     new Map([
       ['INVALID_CHARACTER', false],
       ['NOT_ENOUGH_LENGTH', false],
+      ['INVALID_PASSWORD', false],
     ]),
   );
 
   const navigate = useNavigate();
   const {boardId} = useParams();
-  const {mutate: postLogin} = useRequestPostLogin();
+  const {mutate: postLogin, isSuccess, isError, error: postLoginError} = useRequestPostLogin();
 
   const validatePasswordLength = (password: string) => {
     if (password.length < SETTING.passwordLength && password.length !== 0) {
@@ -88,7 +90,17 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     postLogin({password, id: boardId ?? ''});
-    navigate(`/${boardId}/admin`);
+    if (isError) {
+      if (postLoginError.message.includes('401')) {
+        setError(prev => {
+          const newMap = new Map<PasswordErrorType, boolean>([...prev, ['INVALID_PASSWORD', true]]);
+          return newMap;
+        });
+      }
+    }
+    if (isSuccess) {
+      navigate(`/${boardId}/admin`);
+    }
   };
 
   return (
