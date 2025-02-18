@@ -10,7 +10,10 @@ import {useRequestGetPapersPage} from '@hooks/useRequestGetPapersPage';
 import {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
+import {FutureBoardFallback} from './FutureBoardFallback';
+
 import {PaperThumbnailGrid} from '@/pages/[boardId]/PaperThumbnailGrid';
+import {daysFromNow} from '@/utils/date';
 
 interface Props {
   isAdmin?: boolean;
@@ -28,7 +31,9 @@ export default function BoardPageView({isAdmin = false}: Props) {
     }
   }, [boardId, navigate]);
 
-  const {name} = useRequestGetBoard(boardId ?? '');
+  const {name, showDate} = useRequestGetBoard(boardId ?? '');
+  const daysForShow = daysFromNow(new Date(showDate ?? '2099-01-01'));
+
   const {responses, prevCursor, hasNext, nextCursor} = useRequestGetPapersPage({
     boardId: boardId ?? '',
     cursor,
@@ -45,25 +50,29 @@ export default function BoardPageView({isAdmin = false}: Props) {
   return (
     <VStack p="3.5rem 0 0 0">
       <Header />
-      <VStack p="1.5rem" gap="1rem">
-        <Top>
-          <Top.Line text={`${name}님의 보드`} emphasize={[`${name}`]} />
-        </Top>
-        <HStack justify="space-between">
-          <Button variants="ghost" size="sm" onClick={handleClickPrev} disabled={!prevCursor}>
-            <Text size="bodyBold" textColor="gray">
-              {`<  이전`}
-            </Text>
-          </Button>
-          <Button variants="ghost" size="sm" onClick={handleClickNext} disabled={!hasNext}>
-            <Text size="bodyBold" textColor="gray">
-              {`다음  >`}
-            </Text>
-          </Button>
-        </HStack>
-        <PaperThumbnailGrid papers={responses ?? []} />
-      </VStack>
-      {!isAdmin && (
+      {daysForShow > 0 ? (
+        <FutureBoardFallback name={name ?? ''} daysForShow={daysForShow} />
+      ) : (
+        <VStack p="1.5rem" gap="1rem">
+          <Top>
+            <Top.Line text={`${name}님의 보드`} emphasize={[`${name}`]} />
+          </Top>
+          <HStack justify="space-between">
+            <Button variants="ghost" size="sm" onClick={handleClickPrev} disabled={!prevCursor}>
+              <Text size="bodyBold" textColor="gray">
+                {`<  이전`}
+              </Text>
+            </Button>
+            <Button variants="ghost" size="sm" onClick={handleClickNext} disabled={!hasNext}>
+              <Text size="bodyBold" textColor="gray">
+                {`다음  >`}
+              </Text>
+            </Button>
+          </HStack>
+          <PaperThumbnailGrid papers={responses ?? []} />
+        </VStack>
+      )}
+      {!isAdmin && daysForShow <= 0 && (
         <FixedBottomCTA>
           <Button display="full" size="lg" onClick={() => navigate(`/${boardId}/create-paper`)}>
             메세지 남기기
