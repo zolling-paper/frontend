@@ -10,19 +10,22 @@ import {useTheme} from '@/theme/DesignProvider';
 
 interface Params {
   paper: MultiplePaper;
+  isAdmin: boolean;
 }
 
 export const thumbnailStyle = css({
   aspectRatio: '4/3',
 });
 
-export function PaperThumbnail({paper}: Params) {
+export function PaperThumbnail({paper, isAdmin}: Params) {
   const {theme} = useTheme();
   const navigate = useNavigate();
   const {boardId} = useParams();
 
   const handleClickPaper = () => {
-    navigate(`/${boardId}/${paper.id}`, {state: {...paper}});
+    isAdmin
+      ? navigate(`/${boardId}/${paper.id}`, {state: {...paper}})
+      : navigate(`/${boardId}/login`, {state: {...paper}});
   };
 
   return (
