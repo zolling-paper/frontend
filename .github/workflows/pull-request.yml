@@ -34,3 +34,7 @@ jobs:
       # 5. 린트 실행
       - name: Run lint
         run: pnpm run lint
+
+      # 6. 빌드 실행
+      - name: Run build
+        run: pnpm run build
