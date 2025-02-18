@@ -1,13 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
 import {Button} from '@components/Button';
-import {DateScrollPicker} from '@components/DateScrollPicker/DateScrollPicker';
 import FixedBottomCTA from '@components/FixedBottomCTA/FixedBottomCTA';
 import {Input} from '@components/Input';
 import {VStack} from '@components/Stack';
 import Top from '@components/Top/Top';
-import {YMD} from '@type/model';
-import {dateToYMD, YMDtoDateString} from '@utils/date';
+import {dateToYMD, YMDtoYYYYMMDD} from '@utils/date';
 
 import {BoardFormData, Step} from './page';
 
@@ -19,10 +17,9 @@ interface ShowDateStepProps {
 }
 
 export default function ShowDateStep({formData, setFormData, onSubmit, setStep}: ShowDateStepProps) {
-  const now = dateToYMD(new Date());
-
-  const handleDateChange = (date: YMD) => {
-    setFormData({...formData, showDate: date});
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const date = e.target.value;
+    setFormData({...formData, showDate: dateToYMD(new Date(date))});
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,8 +34,8 @@ export default function ShowDateStep({formData, setFormData, onSubmit, setStep}:
         <Top.Line text="날짜를 정해주세요" emphasize={['날짜']} />
       </Top>
       <form onSubmit={handleSubmit} css={{width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem'}}>
-        <Input labelText="날짜" value={YMDtoDateString(formData.showDate)} disabled />
-        <DateScrollPicker onChange={handleDateChange} initialDate={now} />
+        <Input type="date" labelText="날짜" value={YMDtoYYYYMMDD(formData.showDate)} onChange={handleDateChange} />
+        {/* <DateScrollPicker onChange={handleDateChange} initialDate={now} /> */}
         <FixedBottomCTA direction="row">
           <Button variants="secondary" display="full" size="lg" onClick={() => setStep('password')}>
             이전
