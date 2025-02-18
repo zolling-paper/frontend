@@ -15,9 +15,7 @@ export const postPaper = async (data: PostPaperRequest) => {
 };
 
 export const getPaper = async (data: GetPaperRequestParam) => {
-  return http.get<GetPaperResponse>(`${API_BASE_URL}/paper/${data.id}`, {
-    credentials: 'include',
-  });
+  return http.get<GetPaperResponse>(`${API_BASE_URL}/paper/${data.id}`);
 };
 
 export const getPapersPage = async ({boardId, cursor, limit}: GetPapersPageRequestParam) => {
