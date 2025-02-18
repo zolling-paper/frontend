@@ -11,7 +11,7 @@ import REGEXP from '@constants/regexp';
 import SETTING from '@constants/setting';
 import {useRequestPostLogin} from '@hooks/useRequestPostLogin';
 import {useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 
 type PasswordErrorType = 'NOT_ENOUGH_LENGTH' | 'INVALID_CHARACTER' | 'INVALID_PASSWORD';
 
@@ -35,6 +35,7 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
   const {boardId} = useParams();
+  const {state} = useLocation();
   const {mutate: postLogin, isSuccess, isError, error: postLoginError} = useRequestPostLogin();
 
   const validatePasswordLength = (password: string) => {
@@ -99,6 +100,9 @@ export default function LoginPage() {
       }
     }
     if (isSuccess) {
+      if (state) {
+        navigate(`/${boardId}/${state.id}`);
+      }
       navigate(`/${boardId}/admin`);
     }
   };

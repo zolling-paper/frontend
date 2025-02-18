@@ -6,8 +6,12 @@ export const http = {
     const res = await axios.get<Response>(url, options);
     return res.data;
   },
-  post: async function post<Request = any, Response = unknown>(url: string, data?: Request) {
-    const res = await axios.post<Response>(url, {...data});
+  post: async function post<Request = any, Response = unknown>(
+    url: string,
+    data?: Request,
+    options: AxiosRequestConfig = {},
+  ) {
+    const res = await axios.post<Response>(url, {...data}, {...options});
     return res.data;
   },
   put: async function put<Request = any, Response = unknown>(url: string, data?: Request) {

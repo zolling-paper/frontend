@@ -69,7 +69,7 @@ export default function BoardPageView({isAdmin = false}: Props) {
               </Text>
             </Button>
           </HStack>
-          <PaperThumbnailGrid papers={responses ?? []} />
+          <PaperThumbnailGrid papers={responses ?? []} isAdmin={isAdmin} />
         </VStack>
       )}
       {!isAdmin && (

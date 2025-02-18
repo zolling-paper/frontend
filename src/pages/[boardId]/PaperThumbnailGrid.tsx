@@ -6,6 +6,7 @@ import {PaperThumbnail} from './PaperThumbnail';
 
 interface Params {
   papers: MultiplePaper[];
+  isAdmin: boolean;
 }
 
 const gridStyle = css({
@@ -15,11 +16,11 @@ const gridStyle = css({
   gap: '1rem',
 });
 
-export function PaperThumbnailGrid({papers}: Params) {
+export function PaperThumbnailGrid({papers, isAdmin}: Params) {
   return (
     <div css={gridStyle}>
       {papers.map(paper => (
-        <PaperThumbnail key={paper.id} paper={paper} />
+        <PaperThumbnail key={paper.id} paper={paper} isAdmin={isAdmin} />
       ))}
     </div>
   );
