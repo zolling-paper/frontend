@@ -2,7 +2,6 @@ import {Input} from '@components/Input';
 
 import type {Meta, StoryObj} from '@storybook/react';
 
-
 const meta = {
   title: 'Components/Input',
   component: Input,
@@ -30,7 +29,7 @@ const meta = {
     autoFocus: {
       description: '자동 포커스 여부를 설정합니다',
       control: {type: 'boolean'},
-    }
+    },
   },
   args: {
     labelText: '라벨',

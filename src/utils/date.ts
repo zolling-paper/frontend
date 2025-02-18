@@ -10,8 +10,16 @@ export const dateToYMD = (date: Date) => {
   return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
 };
 
+export const dateToYYYYMMDD = (date: Date) => {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+};
+
 export const YMDtoDateString = (ymd: YMD) => {
   return `${ymd.year}년 ${String(ymd.month).padStart(2, '0')}월 ${String(ymd.day).padStart(2, '0')}일`;
+};
+
+export const YMDtoYYYYMMDD = (ymd: YMD) => {
+  return `${ymd.year}-${String(ymd.month).padStart(2, '0')}-${String(ymd.day).padStart(2, '0')}`;
 };
 
 export const timeFromNow = (target: Date) => {

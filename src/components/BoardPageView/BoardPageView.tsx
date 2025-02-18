@@ -72,7 +72,7 @@ export default function BoardPageView({isAdmin = false}: Props) {
           <PaperThumbnailGrid papers={responses ?? []} />
         </VStack>
       )}
-      {!isAdmin && daysForShow <= 0 && (
+      {!isAdmin && (
         <FixedBottomCTA>
           <Button display="full" size="lg" onClick={() => navigate(`/${boardId}/create-paper`)}>
             메세지 남기기
