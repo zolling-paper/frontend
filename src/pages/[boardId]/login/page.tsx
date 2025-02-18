@@ -35,6 +35,7 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
   const {boardId} = useParams();
+  const {state} = useLocation();
   const {mutate: postLogin, isSuccess, isError, error: postLoginError} = useRequestPostLogin();
 
   const validatePasswordLength = (password: string) => {
@@ -99,7 +100,6 @@ export default function LoginPage() {
       }
     }
     if (isSuccess) {
-      const {state} = useLocation();
       if (state) {
         navigate(`/${boardId}/${state.id}`);
       }

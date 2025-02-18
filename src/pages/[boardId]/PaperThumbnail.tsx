@@ -23,9 +23,11 @@ export function PaperThumbnail({paper, isAdmin}: Params) {
   const {boardId} = useParams();
 
   const handleClickPaper = () => {
-    isAdmin
-      ? navigate(`/${boardId}/${paper.id}`, {state: {...paper}})
-      : navigate(`/${boardId}/login`, {state: {...paper}});
+    if (isAdmin) {
+      navigate(`/${boardId}/${paper.id}`, {state: {...paper}});
+    } else {
+      navigate(`/${boardId}/login`, {state: {...paper}});
+    }
   };
 
   return (
